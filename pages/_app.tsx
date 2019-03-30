@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app'
 import React from 'react'
 import { Provider } from 'react-redux'
-import createStore from '../state/create-store'
+import createStore from '../src/state/create-store'
 
 const store = createStore()
 

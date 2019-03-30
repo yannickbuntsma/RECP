@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { AppState } from '../state/reducer'
-import { GetCount, getCount } from '../state/selectors'
-import { decrement, increment } from '../state/actions'
+import { AppState } from '../src/state/reducer'
+import { GetCount, getCount } from '../src/state/selectors'
+import { decrement, increment } from '../src/state/actions'
+import Button from '../src/components/Button'
+import client from '../src/cms/contentful-client'
 
 export interface Props {
   count: GetCount
@@ -11,13 +13,30 @@ export interface Props {
 }
 
 const Home: React.FC<Props> = ({ count, increment, decrement }) => {
-  console.log('count', count)
+  const logData = () => {
+    console.log('Logging 🖍')
+    client.getEntries().then((entries: any) =>
+      entries.items.forEach((entry: any) => {
+        if (entry.fields) {
+          console.log(entry.fields)
+        }
+      })
+    )
+  }
+
   return (
     <div>
       <p>Welcome to Next.js!</p>
       <p>Count is: {count}</p>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={increment}>Increment</button>
+      <Button background="indianred" onClick={decrement}>
+        Decrement
+      </Button>
+      <Button background="green" onClick={increment}>
+        Increment
+      </Button>
+      <Button background="goldenrod" onClick={logData}>
+        Log data
+      </Button>
     </div>
   )
 }

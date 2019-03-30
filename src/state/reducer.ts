@@ -10,7 +10,6 @@ export const initialState: AppState = {
 }
 
 export const rootReducer = (state = initialState, action: Action) => {
-  console.log('state', state)
   switch (action.type) {
     case INCREMENT:
       return {
