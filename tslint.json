@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true
+  },
+  "linterOptions": {
+    "exclude": ["**/node_modules/**", "**/build/**", "**/types/**", "*.js"]
+  }
+}
