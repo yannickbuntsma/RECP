@@ -8,6 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "clean": "rimraf .next",
+    "serve": "next -p 8000",
     "dev": "next -p 8000",
     "build": "next build",
     "start": "next start -p 8000",
@@ -26,6 +28,7 @@
     "@emotion/styled": "^10.0.9",
     "@types/react-redux": "^7.0.5",
     "@zeit/next-typescript": "^1.1.1",
+    "axios": "^0.18.0",
     "contentful": "^7.5.0",
     "dotenv": "^7.0.0",
     "envalid": "^4.2.2",

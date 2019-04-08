@@ -1,0 +1,22 @@
+import * as React from 'react'
+import styled from '@emotion/styled'
+
+export interface Props {
+  src: string
+  alt?: string
+  fill?: 'cover' | 'contain'
+}
+
+const Image: React.FC<Props> = ({ src, alt, fill = 'cover' }) => (
+  <Styled>
+    <div aria-hidden style={{
+      backgroundImage: `url('${src}')`,
+      backgroundSize: fill,
+    }} />
+    <img {...{ src, alt }} style={{ width: '0', height: '0' }} />
+  </Styled>
+)
+
+const Styled = styled.div``
+
+export default Image

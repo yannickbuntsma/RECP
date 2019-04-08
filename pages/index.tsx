@@ -7,6 +7,7 @@ import Button from '../src/components/Elements/Button'
 import client from '../src/cms/contentful-client'
 import RecipeCard from '../src/components/Recipe/RecipeCard'
 import { Recipe } from '../src/types'
+import RecipeList from '../src/components/Recipe/RecipeList'
 
 export interface Props {
   count: GetCount
@@ -20,13 +21,15 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
   const getFields = (): void => {
     client
       .getEntries()
-      .then((entries: any) =>
-        entries.items.forEach((entry: any) => {
+      .then((entries: any) => {
+        const recipes = entries.items.map((entry: any) => {
           if (entry.fields) {
-            setData(entry.fields)
+            return entry.fields
           }
         })
-      )
+        console.log('recipes', recipes)
+        setData(recipes)
+      })
       .catch((err) => console.error(err))
   }
 
@@ -36,7 +39,7 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
 
   const logData = () => {
     console.log('Logging 🖍')
-    console.log(getFields())
+    client.getEntries().then((res) => console.log(res))
   }
 
   return (
@@ -52,7 +55,7 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
       <Button background="goldenrod" onClick={logData}>
         Log data
       </Button>
-      {data && <RecipeCard recipe={data} />}
+      {data && <RecipeList recipes={data} />}
     </div>
   )
 }
