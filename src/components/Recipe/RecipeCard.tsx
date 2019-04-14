@@ -1,49 +1,71 @@
-import React from 'react'
-import { Card } from '../Elements'
+import * as React from 'react'
 import styled from '@emotion/styled'
+import { withTheme } from 'emotion-theming'
 import { Recipe } from '../../types'
+
+import { Card } from '../Elements'
 import Tag from '../Elements/Tag'
 import Image from '../Elements/Image'
+import IngredientList from '../Ingredient/IngredientList'
+import { ThemeProps } from '../../theme/theme'
 
-export interface Props {
+export interface Props extends ThemeProps {
   recipe: Recipe
 }
 
 const RecipeCard: React.FC<Props> = ({
-  recipe: {
-    title,
-    instructions,
-    image,
-    ingredients,
-    preparationTime,
-    cookingTime,
-    tags,
-  },
+  recipe: { title, image, preparationTime, cookingTime, tags },
+  theme,
 }) => (
   <Card>
-    <StyledRecipe>
+    {console.log(image)}
+    <StyledRecipeCard>
       <h1>{title}</h1>
-      <Image src={image && image.fields.file.url} alt={title} />
-      <ul>
-        {Array.isArray(ingredients) &&
-          ingredients.map((item: string) => <li key={item}>{item}</li>)}
-      </ul>
-      <p>{instructions}</p>
+      {image && <Image src={image.fields.file.url} alt={title} />}
       <p>{preparationTime}</p>
       <p>{cookingTime}</p>
       {tags && (
         <div>
           {tags.map((tag) => (
-            <Tag key={tag} label={tag} />
+            <span key={tag}>{tag}</span>
           ))}
         </div>
       )}
-    </StyledRecipe>
+    </StyledRecipeCard>
   </Card>
 )
 
-const StyledRecipe = styled.div`
+const StyledRecipeCard = styled.div`
+  position: relative;
   padding: 2rem;
+  min-height: 300px;
+  overflow: hidden;
+  h1 {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+  .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.25) 15%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+  }
 `
 
-export default RecipeCard
+export default withTheme(RecipeCard)

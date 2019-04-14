@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import styled from '@emotion/styled'
 
 export interface Props {
@@ -16,6 +16,7 @@ const Tag: React.FC<Props> = ({ label, icon }) => (
 )
 
 const StyledTag = styled.span`
+  display: inline-block;
   position: relative;
   background-color: #cecece;
   padding: 0.5rem 1rem;
