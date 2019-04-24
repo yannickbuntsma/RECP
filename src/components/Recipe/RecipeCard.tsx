@@ -4,9 +4,7 @@ import { withTheme } from 'emotion-theming'
 import { Recipe } from '../../types'
 
 import { Card } from '../Elements'
-import Tag from '../Elements/Tag'
 import Image from '../Elements/Image'
-import IngredientList from '../Ingredient/IngredientList'
 import { ThemeProps } from '../../theme/theme'
 
 export interface Props extends ThemeProps {
@@ -61,8 +59,8 @@ const StyledRecipeCard = styled.div`
       left: 0;
       background-image: linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.25) 15%,
-        rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0.25) 0%,
+        rgba(0, 0, 0, 0) 50%
       );
     }
   }
