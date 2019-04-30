@@ -1,4 +1,6 @@
 import * as React from 'react'
+import styled from '@emotion/styled'
+
 import { Ingredient as IngredientType } from '../../types'
 
 export interface Props {
@@ -13,4 +15,4 @@ const Ingredient: React.FC<Props> = ({ amount, unit, name }) => (
   </div>
 )
 
-export default Ingredient
+export default styled(Ingredient)``

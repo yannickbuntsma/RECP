@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from '@emotion/styled'
 import { Ingredient as IngredientType } from '../../types'
 
 import List from '../Elements/List'
@@ -8,7 +9,7 @@ export interface Props {
   ingredients: IngredientType[]
 }
 
-const IngredientList: React.FC<Props> = ({ ingredients }) => (
+export const IngredientList: React.FC<Props> = ({ ingredients }) => (
   <List>
     {ingredients.map((ingredient: IngredientType) => (
       <li key={ingredient.id}>
@@ -22,4 +23,4 @@ const IngredientList: React.FC<Props> = ({ ingredients }) => (
   </List>
 )
 
-export default IngredientList
+export default styled(IngredientList)``

@@ -1,13 +1,12 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { withTheme } from 'emotion-theming'
+
 import { Recipe } from '../../types'
+import { ThemeProps } from '../../theme/theme'
 
 import { Card } from '../Elements'
-import Tag from '../Elements/Tag'
 import Image from '../Elements/Image'
-import IngredientList from '../Ingredient/IngredientList'
-import { ThemeProps } from '../../theme/theme'
 
 export interface Props extends ThemeProps {
   recipe: Recipe
@@ -15,10 +14,8 @@ export interface Props extends ThemeProps {
 
 const RecipeCard: React.FC<Props> = ({
   recipe: { title, image, preparationTime, cookingTime, tags },
-  theme,
 }) => (
   <Card>
-    {console.log(image)}
     <StyledRecipeCard>
       <h1>{title}</h1>
       {image && <Image src={image.fields.file.url} alt={title} />}

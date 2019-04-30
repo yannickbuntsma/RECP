@@ -1,12 +1,10 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-const List: React.FC = ({ children }) => {
-  return <UL>{children}</UL>
+export const List: React.FC = ({ children }) => {
+  return <ul>{children}</ul>
 }
 
-const UL = styled.ul`
+export default styled(List)`
   list-style: none;
 `
-
-export default List

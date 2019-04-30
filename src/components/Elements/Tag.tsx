@@ -8,14 +8,14 @@ export interface Props {
   onRemove?: () => void
 }
 
-const Tag: React.FC<Props> = ({ label, icon }) => (
-  <StyledTag>
+export const Tag: React.FC<Props> = ({ label, icon }) => (
+  <span>
     {icon}
     <span>{label}</span>
-  </StyledTag>
+  </span>
 )
 
-const StyledTag = styled.span`
+export default styled(Tag)`
   display: inline-block;
   position: relative;
   background-color: #cecece;
@@ -49,5 +49,3 @@ const StyledTag = styled.span`
     background-color: #eeeeee;
   }
 `
-
-export default Tag
