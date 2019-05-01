@@ -4,7 +4,5 @@
   "rules": {
     "prettier": true
   },
-  "linterOptions": {
-    "exclude": ["**/node_modules/**", "**/build/**", "**/types/**", "*.js"]
-  }
+  "rulesDirectory": []
 }

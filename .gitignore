@@ -5,6 +5,7 @@
 
 # Next.js
 .next
+dist
 
 # Logs
 logs
