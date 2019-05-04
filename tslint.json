@@ -1,8 +1,9 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint-plugin-prettier"],
+  "extends": ["tslint-config-prettier"],
   "rules": {
-    "prettier": true
+    "prettier": true,
+    "origin-ordered-imports": [false]
   },
   "rulesDirectory": []
 }

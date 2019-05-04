@@ -1,5 +1,5 @@
 import * as React from 'react'
-import App, { Container } from 'next/app'
+import App, { Container, NextAppContext } from 'next/app'
 import { ThemeProvider } from 'emotion-theming'
 import { Provider } from 'react-redux'
 
@@ -9,7 +9,7 @@ import createStore from '../src/state/create-store'
 const store = createStore()
 
 export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, router, ctx }: NextAppContext) {
     let pageProps = {}
 
     if (Component.getInitialProps) {

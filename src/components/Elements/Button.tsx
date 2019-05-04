@@ -6,8 +6,8 @@ export interface Props {
   backgroundColor: string
 }
 
-export const Button: React.FC<Props> = ({ children }) => (
-  <button className="button">{children}</button>
+export const Button: React.FC<Props> = ({ children, onClick }) => (
+  <button className="button" onClick={onClick}>{children}</button>
 )
 
 export default styled(Button)`

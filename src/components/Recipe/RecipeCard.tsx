@@ -15,21 +15,21 @@ export interface Props extends ThemeProps {
 const RecipeCard: React.FC<Props> = ({
   recipe: { title, image, preparationTime, cookingTime, tags },
 }) => (
-  <Card>
-    <StyledRecipeCard>
-      <h1>{title}</h1>
-      {image && <Image src={image.fields.file.url} alt={title} />}
-      <p>{preparationTime}</p>
-      <p>{cookingTime}</p>
-      {tags && (
-        <div>
-          {tags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-      )}
-    </StyledRecipeCard>
-  </Card>
+    <Card>
+      <StyledRecipeCard>
+        <h1>{title}</h1>
+        {image && <Image src={image.fields.file.url} alt={title} />}
+        <p>{preparationTime}</p>
+        <p>{cookingTime}</p>
+        {tags && (
+          <div>
+            {tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        )}
+      </StyledRecipeCard>
+    </Card>
 )
 
 const StyledRecipeCard = styled.div`

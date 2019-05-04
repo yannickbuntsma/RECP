@@ -24,7 +24,10 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
       .then((entries: any) => {
         const recipes = entries.items.map((entry: any) => {
           if (entry.fields) {
-            return entry.fields
+            return {
+              ...entry.fields,
+              id: entry.sys.id,
+            }
           }
         })
         console.log('recipes', recipes)
@@ -46,13 +49,13 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
     <div>
       <p>Welcome to Next.js!</p>
       <p>Count is: {count}</p>
-      <Button background="indianred" onClick={decrement}>
+      <Button backgroundColor="indianred" onClick={decrement}>
         Decrement
       </Button>
-      <Button background="green" onClick={increment}>
+      <Button backgroundColor="green" onClick={increment}>
         Increment
       </Button>
-      <Button background="goldenrod" onClick={logData}>
+      <Button backgroundColor="goldenrod" onClick={logData}>
         Log data
       </Button>
       {data && <RecipeList recipes={data} />}

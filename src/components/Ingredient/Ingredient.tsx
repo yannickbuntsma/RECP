@@ -4,15 +4,19 @@ import styled from '@emotion/styled'
 import { Ingredient as IngredientType } from '../../types'
 
 export interface Props {
-  amount: IngredientType['amount']
-  unit: IngredientType['unit']
-  name: IngredientType['name']
+  ingredient: {
+    amount: IngredientType['amount']
+    unit: IngredientType['unit']
+    name: IngredientType['name']
+  }
 }
 
-const Ingredient: React.FC<Props> = ({ amount, unit, name }) => (
-  <div>
+const Ingredient: React.FC<Props> = ({
+  ingredient: { amount, unit, name },
+}) => (
+  <span>
     {amount} {unit} {name}
-  </div>
+  </span>
 )
 
 export default styled(Ingredient)``

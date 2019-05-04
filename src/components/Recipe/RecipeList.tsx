@@ -1,5 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import Link from 'next/link'
+
 import { Recipe } from '../../types'
 import RecipeCard from './RecipeCard'
 import List from '../Elements/List'
@@ -12,9 +14,11 @@ const RecipeList: React.FC<Props> = ({ recipes }) => (
   <List>
     <StyledRecipeList>
       {recipes.map((recipe) => (
-        <StyledRecipeListCard key={recipe.title}>
-          <RecipeCard recipe={recipe} />
-        </StyledRecipeListCard>
+        <Link key={recipe.id} href={`recipe/${recipe.id}`}>
+          <StyledRecipeListCard key={recipe.title}>
+            <RecipeCard recipe={recipe} />
+          </StyledRecipeListCard>
+        </Link>
       ))}
     </StyledRecipeList>
   </List>
