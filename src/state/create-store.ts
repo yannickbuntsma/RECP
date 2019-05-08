@@ -1,9 +1,9 @@
 import { createStore as reduxCreateStore } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
-import { initialState, rootReducer } from './reducer'
+import { rootReducer } from './reducer'
 
-const createStore = () =>
+const createStore = (initialState = {}) =>
   reduxCreateStore(
     rootReducer,
     initialState,

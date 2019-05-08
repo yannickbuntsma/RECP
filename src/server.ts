@@ -11,7 +11,7 @@ app.prepare().then(() => {
 
   // @ts-ignore TODO: Add types for req and res
   server.get('/recipe/:id', (req, res) => {
-    const mergedQuery = Object.assign({}, req.query, req.params)
+    const mergedQuery = { ...req.query, ...req.params }
     return app.render(req, res, '/recipe', mergedQuery)
   })
 

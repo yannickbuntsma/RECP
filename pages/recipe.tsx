@@ -33,8 +33,10 @@ export default class extends React.Component<Props> {
   render() {
     const { recipe } = this.props
 
-    if (!recipe) return null
+    if (!recipe) {
+      return null
+    }
 
-    return <RecipeDetail recipe={recipe}/>
+    return <RecipeDetail recipe={recipe} />
   }
 }

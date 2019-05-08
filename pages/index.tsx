@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { AppState } from '../src/state/reducer'
-import { GetCount, getCount } from '../src/state/selectors'
-import { decrement, increment } from '../src/state/actions'
-import Button from '../src/components/Elements/Button'
+import { Button } from '../src/components/Elements'
 import client from '../src/cms/contentful-client'
-import RecipeCard from '../src/components/Recipe/RecipeCard'
 import { Recipe } from '../src/types'
-import RecipeList from '../src/components/Recipe/RecipeList'
+import { RecipeList } from '../src/components/Recipe'
 
 export interface Props {
-  count: GetCount
-  increment: typeof increment
-  decrement: typeof decrement
 }
 
-const Home: React.FC<Props> = ({ count, increment, decrement }) => {
+const Home: React.FC<Props> = () => {
   const [data, setData] = useState<Recipe[]>([] as Recipe[])
 
   const getFields = (): void => {
@@ -47,15 +39,7 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
 
   return (
     <div>
-      <p>Welcome to Next.js!</p>
-      <p>Count is: {count}</p>
-      <Button backgroundColor="indianred" onClick={decrement}>
-        Decrement
-      </Button>
-      <Button backgroundColor="green" onClick={increment}>
-        Increment
-      </Button>
-      <Button backgroundColor="goldenrod" onClick={logData}>
+      <Button background="goldenrod" onClick={logData}>
         Log data
       </Button>
       {data && <RecipeList recipes={data} />}
@@ -63,16 +47,4 @@ const Home: React.FC<Props> = ({ count, increment, decrement }) => {
   )
 }
 
-const mapStateToProps = (state: AppState) => ({
-  count: getCount(state),
-})
-
-const mapDispatchToProps = {
-  increment,
-  decrement,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default Home

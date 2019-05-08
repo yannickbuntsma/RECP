@@ -1,2 +1,7 @@
 export { default as Button } from './Button'
 export { default as Card } from './Card'
+export { default as Checkbox } from './Checkbox'
+export { default as Hero } from './Hero'
+export { default as Image } from './Image'
+export { default as List } from './List'
+export { default as Tag } from './Tag'

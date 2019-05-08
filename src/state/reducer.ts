@@ -1,27 +1,8 @@
-import { Action } from 'redux'
-import { INCREMENT, DECREMENT } from './actions'
+import { combineReducers } from 'redux'
+import { shoppingListReducer, ShoppingListState } from './shopping-list/reducer'
 
-export interface AppState {
-  count: number
-}
+export interface AppState extends ShoppingListState {}
 
-export const initialState: AppState = {
-  count: 0,
-}
-
-export const rootReducer = (state = initialState, action: Action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return {
-        ...state,
-        count: state.count + 1,
-      }
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1,
-      }
-    default:
-      return state
-  }
-}
+export const rootReducer = combineReducers({
+  shoppingList: shoppingListReducer,
+})

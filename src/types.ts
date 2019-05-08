@@ -4,6 +4,8 @@
 //   return Array(iterations).fill(start).map((item, index) => item + (increment * index))
 // }
 
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
 type Unit = 'tsp' | 'tbsp' | 'ml' | 'l' | 'g' | 'kg' | 'pieces' | 'pinch'
 
 type Tag = string

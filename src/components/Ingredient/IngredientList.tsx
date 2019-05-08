@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { Ingredient as IngredientType } from '../../types'
 
@@ -8,22 +8,31 @@ import Checkbox from '../Elements/Checkbox'
 
 export interface Props {
   ingredients: IngredientType[]
+  selectedIngredients: Array<IngredientType['id']>
+  onChange?: (selected: IngredientType[]) => unknown
 }
 
-export const IngredientList: React.FC<Props> = ({ ingredients }) => {
-  const [selected, setSelected] = useState<string[]>(
-    ingredients.map<string>((item) => item.id)
-  )
+type Id = IngredientType['id']
 
-  const isSelected = (id: IngredientType['id']): boolean =>
-    selected.some((ingredientId) => ingredientId === id)
+export const IngredientList: React.FC<Props> = ({
+  ingredients,
+  selectedIngredients,
+  onChange,
+}) => {
+  const isSelected = (id: Id): boolean =>
+    selectedIngredients.some((ingredientId) => ingredientId === id)
 
-  const handleChange = (id: IngredientType['id']): void => {
-    const newState = isSelected(id)
-      ? selected.filter((ingredientId) => ingredientId !== id)
-      : [...selected, id]
+  const handleChange = (id: Id): Props['selectedIngredients'] => {
+    const selected: Id[] = isSelected(id)
+      ? selectedIngredients.filter((ingredientId) => ingredientId !== id)
+      : [...selectedIngredients, id]
 
-    setSelected(newState)
+    const newIngredients = ingredients.filter((item) =>
+      selected.includes(item.id)
+    )
+
+    onChange && onChange(newIngredients)
+    return newIngredients.map((item) => item.id)
   }
 
   return (

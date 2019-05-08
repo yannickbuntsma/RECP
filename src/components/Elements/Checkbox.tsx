@@ -42,7 +42,8 @@ const StyledCheckbox: React.FC<Props> = styled.div`
   display: inline-block;
   width: ${({ size }) => getSizePixels(size)};
   height: ${({ size }) => getSizePixels(size)};
-  background: ${(props: Props) => (props.checked ? 'salmon' : 'papayawhip')};
+  background: ${(props: Props) =>
+    props.checked ? props.theme.colors.primary : 'papayawhip'};
   border-radius: 3px;
   transition: all 150ms;
 
@@ -50,7 +51,7 @@ const StyledCheckbox: React.FC<Props> = styled.div`
   ${HiddenCheckbox}:focus + & {
     box-shadow: 0 0 0 3px pink;
   }
-  
+
   ${HiddenCheckbox}:disabled + & {
     background: ${(props: Props) => (props.disabled ? 'salmon' : 'papayawhip')};
   }
@@ -59,6 +60,7 @@ const StyledCheckbox: React.FC<Props> = styled.div`
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+  margin-right: 1rem;
 `
 
 const Icon = styled.svg`

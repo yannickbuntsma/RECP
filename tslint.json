@@ -1,9 +1,72 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint-config-prettier"],
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
   "rules": {
-    "prettier": true,
-    "origin-ordered-imports": [false]
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    /* Would like to enable: */
+    "jsx-no-lambda": false,
+    "one-variable-per-declaration": false,
+    "no-var-requires": false,
+    "no-shadowed-variable": false,
+    "max-classes-per-file": false,
+    "prefer-const": false,
+    "no-empty": false,
+    "no-object-literal-type-assertion": false,
+    "no-console": false,
+    "jsx-no-bind": false,
+    "no-duplicate-imports": false,
+    "prefer-for-of": false,
+    /* END would like to enable */
+    /* Default ts-lint overrides */
+    "completed-docs": false,
+    "comment-format": false,
+    "interface-name": false,
+    "prefer-conditional-expression": false,
+    "interface-over-type-literal": false,
+    "jsx-boolean-value": false,
+    "match-default-export-name": false,
+    "member-access": [true, "no-public"],
+    "member-ordering": false,
+    "newline-before-return": false,
+    "no-any": false,
+    "no-empty-interface": false,
+    "no-implicit-dependencies": false,
+    "no-import-side-effect": false,
+    "radix": false,
+    "no-magic-numbers": false,
+    "no-non-null-assertion": false,
+    "no-null-keyword": false,
+    "no-submodule-imports": false,
+    "no-unnecessary-type-assertion": false,
+    "no-unsafe-any": false,
+    "no-unused-expression": [
+      true,
+      "allow-tagged-template",
+      "allow-fast-null-checks"
+    ],
+    "object-literal-sort-keys": false,
+    "only-arrow-functions": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "any",
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "prefer-function-over-method": false,
+    "strict-boolean-expressions": false,
+    "typedef": false,
+    "deprecation": true
   },
   "rulesDirectory": []
 }
