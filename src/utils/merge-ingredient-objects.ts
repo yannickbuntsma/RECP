@@ -1,5 +1,5 @@
-import { IngredientObject } from '../types'
-import { Ingredient, Omit } from '../../types'
+import { IngredientObject } from '../state/types'
+import { Ingredient, Omit } from '../types'
 
 export const mergeIngredientObjects = (
   existingObj: IngredientObject,

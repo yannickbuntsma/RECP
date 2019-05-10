@@ -1,4 +1,4 @@
-import { IngredientObject } from '../types'
+import { IngredientObject } from '../state/types'
 import { mergeIngredientObjects } from './merge-ingredient-objects'
 
 const base: IngredientObject = {

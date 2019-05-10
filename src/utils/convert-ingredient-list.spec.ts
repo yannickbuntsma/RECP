@@ -1,6 +1,6 @@
-import { IngredientObject } from '../types'
+import { IngredientObject } from '../state/types'
 import { arrayToObject, objectToArray } from './convert-ingredient-list'
-import { Ingredient } from '../../types'
+import { Ingredient } from '../types'
 
 const testArray: Ingredient[] = [
   { id: 'some-id', name: 'paprika', amount: 3, unit: 'pieces' },

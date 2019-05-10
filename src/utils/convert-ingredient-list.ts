@@ -1,5 +1,5 @@
-import { Ingredient } from '../../types'
-import { IngredientObject } from '../types'
+import { Ingredient } from '../types'
+import { IngredientObject } from '../state/types'
 
 export const arrayToObject = (array: Ingredient[]): IngredientObject =>
   array.reduce((acc, ingredient) => {

@@ -4,8 +4,8 @@ import {
   addToShoppingList,
 } from './actions'
 import { Ingredient } from '../../types'
-import { arrayToObject } from '../helpers/convert-ingredient-list'
-import { mergeIngredientObjects } from '../helpers/merge-ingredient-objects'
+import { arrayToObject } from '../../utils/convert-ingredient-list'
+import { mergeIngredientObjects } from '../../utils/merge-ingredient-objects'
 
 export type ShoppingListState = {
   items:
