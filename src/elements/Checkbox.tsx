@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { withTheme } from 'emotion-theming'
-import { ThemeProps } from '../../theme/theme'
+import { ThemeProps } from '../theme/theme'
 
 export interface Props extends ThemeProps {
   checked: boolean

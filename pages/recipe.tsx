@@ -5,6 +5,7 @@ import { Recipe } from '../src/types'
 import getRecipe from '../src/cms/get-recipe'
 
 import RecipeDetail from '../src/components/Recipe/RecipeDetail'
+import Layout from './_layout'
 
 export interface Props {
   recipe: Recipe
@@ -37,6 +38,10 @@ export default class extends React.Component<Props> {
       return null
     }
 
-    return <RecipeDetail recipe={recipe} />
+    return (
+      <Layout>
+        <RecipeDetail recipe={recipe} />
+      </Layout>
+    )
   }
 }

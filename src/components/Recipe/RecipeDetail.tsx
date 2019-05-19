@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
+import { MdAddShoppingCart } from 'react-icons/md'
 
 import { Ingredient, Recipe } from '../../types'
-import { AppState } from '../../state/reducer'
 
-import Hero from '../Elements/Hero'
+import Hero from '../../elements/Hero'
 import Heading from '../Typography/Heading'
 import { IngredientList } from '../Ingredient/IngredientList'
-import {
-  AddToShoppingList,
-  addToShoppingList,
-} from '../../state/shopping-list/actions'
-import { Button } from '../Elements'
+import { addToShoppingList } from '../../state/shopping-list/actions'
+import { Button } from '../../elements'
 
 export interface DispatchProps {
   addToShoppingList: typeof addToShoppingList
@@ -61,7 +58,7 @@ const RecipeDetail: React.FC<Props> = ({
         onChange={handleIngredientSelection}
       />
       <Button onClick={() => handleAdd(ingredientList, selected)}>
-        Add to list
+        <MdAddShoppingCart style={{ height: '2rem', width: '2rem' }} />
       </Button>
       <ReactMarkdown source={instructions} />
       <p>{instructions}</p>

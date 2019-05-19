@@ -5,7 +5,7 @@ import { withTheme } from 'emotion-theming'
 import { Recipe } from '../../types'
 import { ThemeProps } from '../../theme/theme'
 
-import { Card, Image } from '../Elements'
+import { Card, Image } from '../../elements'
 import { Heading } from '../Typography'
 import RecipeCardDetails from './RecipeCardDetails'
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from '../src/components/Elements'
 import client from '../src/cms/contentful-client'
 import { Recipe } from '../src/types'
 import { RecipeList } from '../src/components/Recipe'
+import Layout from './_layout'
 
-export interface Props {
-}
+export interface Props {}
 
 const Home: React.FC<Props> = () => {
   const [data, setData] = useState<Recipe[]>([] as Recipe[])
@@ -37,14 +36,7 @@ const Home: React.FC<Props> = () => {
     client.getEntries().then((res) => console.log(res))
   }
 
-  return (
-    <div>
-      <Button background="goldenrod" onClick={logData}>
-        Log data
-      </Button>
-      {data && <RecipeList recipes={data} />}
-    </div>
-  )
+  return <Layout>{data && <RecipeList recipes={data} />}</Layout>
 }
 
 export default Home

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Recipe } from '../../types'
 import RecipeCard from './RecipeCard'
-import List from '../Elements/List'
+import List from '../../elements/List'
 
 export interface Props {
   recipes: Recipe[]
