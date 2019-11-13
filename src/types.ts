@@ -27,3 +27,10 @@ export interface Recipe {
   cookingTime: 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60
   tags: Tag[]
 }
+
+const ingr = [
+  { id: '1', name: 'paprika', amount: 2, unit: 'pieces' },
+  { id: '2', name: 'tomaat', amount: 2, unit: 'pieces' },
+  { id: '3', name: 'water', amount: 2, unit: 'l' },
+  { id: '4', name: 'zout', amount: 3, unit: 'pinch' },
+  ]

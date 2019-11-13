@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { withTheme } from 'emotion-theming'
 import { ThemeProps } from '../theme/theme'
+import { lightenDarkenColor } from '../utils'
 
 export interface Props extends ThemeProps {
   checked: boolean
@@ -14,6 +15,7 @@ export interface PropsWithType extends Props {
 }
 
 // TODO: Fix the typing here
+// @ts-ignore
 const HiddenCheckbox: React.FC<PropsWithType> = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
@@ -40,16 +42,25 @@ const getSizePixels = (size: Props['size']) => {
 
 const StyledCheckbox: React.FC<Props> = styled.div`
   display: inline-block;
+  margin-right: 1rem;
   width: ${({ size }) => getSizePixels(size)};
   height: ${({ size }) => getSizePixels(size)};
-  background: ${(props: Props) =>
-    props.checked ? props.theme.colors.primary : 'papayawhip'};
+  background: ${({ theme, checked }: Props) =>
+    checked
+      ? theme.colors.primary
+      : lightenDarkenColor(theme.colors.primary, 30)};
   border-radius: 3px;
-  transition: all 150ms;
+  transition: all 150ms; // fix the 'all' when I know what to transition
+  box-shadow: 0 0 0 0 pink;
+  opacity: ${({ checked }: Props) => (checked ? 1 : 0.5)};
 
   // @ts-ignore // TODO: Fix tslint error
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px pink;
+    box-shadow: 0 0 0 4px
+      ${({ theme, checked }: Props) =>
+        checked
+          ? lightenDarkenColor(theme.colors.primary, 40)
+          : lightenDarkenColor(theme.colors.primary, -20)};
   }
 
   ${HiddenCheckbox}:disabled + & {
@@ -57,27 +68,23 @@ const StyledCheckbox: React.FC<Props> = styled.div`
   }
 `
 
-const CheckboxContainer = styled.div`
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 1rem;
-`
-
 const Icon = styled.svg`
   fill: none;
   stroke: white;
   stroke-width: 2px;
+  transition: opacity 250ms ease-in-out;
+  opacity: ${({ checked }: Props) => (checked ? 1 : 0)};
 `
 
 const Checkbox: React.FC<Props> = ({ checked, ...props }) => (
-  <CheckboxContainer>
-    <HiddenCheckbox type="checkbox" {...props} />
+  <>
+    <HiddenCheckbox type="checkbox" checked={checked} {...props} />
     <StyledCheckbox checked={checked} {...props}>
-      <Icon viewBox="0 0 24 24">
+      <Icon viewBox="0 0 24 24" checked={checked} {...props}>
         <polyline points="20 6 9 17 4 12" />
       </Icon>
     </StyledCheckbox>
-  </CheckboxContainer>
+  </>
 )
 
 export default withTheme(Checkbox)

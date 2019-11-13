@@ -24,7 +24,7 @@ export interface Props extends StateProps {
   }>
 }
 
-const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
+export const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
   <header className={className}>
     <ul>
       {items.map((item) => (
@@ -40,6 +40,7 @@ const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
         </span>
         <MdShoppingCart className="icon" />
       </li>
+      <div className="bottom-bar" />
     </ul>
   </header>
 )
@@ -54,7 +55,6 @@ export default connect(
 )(
   withTheme(styled(Header)`
     width: 100%;
-    background: ${({ theme }) => theme.colors.background};
     display: flex;
     align-items: center;
 
@@ -64,36 +64,10 @@ export default connect(
       display: flex;
       padding: 0 1rem;
     }
-
-    a {
-      display: block;
-      padding: 2rem 1rem;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: ${({ theme }) => theme.colors.primary};
-
-      &:after {
-        content: '';
-        display: block;
-        height: 3px;
-        width: 0;
-        margin: 0 auto;
-        position: relative;
-        top: 6px;
-        transition: width 150ms ease-in-out;
-        background-color: ${({ theme }) => theme.colors.primary};
-      }
-
-      &:hover {
-        color: ${({ theme }) => lightenDarkenColor(theme.colors.primary, -50)};
-
-        &:after {
-          background-color: ${({ theme }) =>
-            lightenDarkenColor(theme.colors.primary, -50)};
-          width: 100%;
-        }
-      }
+    
+    .bottom-bar {
+      height: 4px;
+      width: 100%;
     }
 
     .shopping-list-icon {
