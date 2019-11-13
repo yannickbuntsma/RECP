@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Header, HeaderProps } from '../src/components'
+import { Header } from '../src/components'
 
 export interface Props {}
 
-const menuItems: HeaderProps['items'] = [
+const menuItems: any = [
   { label: 'Home', href: '/' },
   { label: 'Shopping List', href: '/shopping-list' },
 ]

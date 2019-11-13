@@ -5,18 +5,19 @@ import Link from 'next/link'
 import { withTheme } from 'emotion-theming'
 import { MdShoppingCart } from 'react-icons/md'
 
-import { lightenDarkenColor, objectToArray } from '../../utils'
+import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
 import {
   GetShoppingList,
   getShoppingList,
 } from '../../state/shopping-list/selectors'
+import { ThemeProps } from '../../theme/theme'
 
 export interface StateProps {
   shoppingList: GetShoppingList
 }
 
-export interface Props extends StateProps {
+export interface Props extends StateProps, ThemeProps {
   className?: string
   items: Array<{
     label: string

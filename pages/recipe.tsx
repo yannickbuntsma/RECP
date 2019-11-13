@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NextContext } from 'next'
+import { AppContext } from 'next/app'
 
 import { Recipe } from '../src/types'
 import getRecipe from '../src/cms/get-recipe'
@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export default class extends React.Component<Props> {
-  static async getInitialProps({ query: { id } }: NextContext) {
+  static async getInitialProps({ query: { id } }: any) {
     let recipe
 
     if (typeof id === 'string') {

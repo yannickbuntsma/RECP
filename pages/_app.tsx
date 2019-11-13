@@ -1,5 +1,6 @@
 import * as React from 'react'
-import App, { Container, NextAppContext } from 'next/app'
+import { NextPageContext } from 'next'
+import App, { AppContext, Container } from 'next/app'
 import { ThemeProvider } from 'emotion-theming'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -10,7 +11,7 @@ import { createStore } from '../src/state/create-store'
 const store = createStore()
 
 export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }: NextAppContext) {
+  static async getInitialProps({ Component, router, ctx }: AppContext) {
     let pageProps = {}
 
     if (Component.getInitialProps) {

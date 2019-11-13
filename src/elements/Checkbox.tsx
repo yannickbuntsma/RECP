@@ -45,28 +45,25 @@ const StyledCheckbox: React.FC<Props> = styled.div`
   margin-right: 1rem;
   width: ${({ size }) => getSizePixels(size)};
   height: ${({ size }) => getSizePixels(size)};
-  background: ${({ theme, checked }: Props) =>
-    checked
-      ? theme.colors.primary
-      : lightenDarkenColor(theme.colors.primary, 30)};
   border-radius: 3px;
   transition: all 150ms; // fix the 'all' when I know what to transition
   box-shadow: 0 0 0 0 pink;
   opacity: ${({ checked }: Props) => (checked ? 1 : 0.5)};
-
-  // @ts-ignore // TODO: Fix tslint error
-  ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 4px
-      ${({ theme, checked }: Props) =>
-        checked
-          ? lightenDarkenColor(theme.colors.primary, 40)
-          : lightenDarkenColor(theme.colors.primary, -20)};
-  }
-
-  ${HiddenCheckbox}:disabled + & {
-    background: ${(props: Props) => (props.disabled ? 'salmon' : 'papayawhip')};
-  }
+  background: ${({ theme, checked }: Props) =>
+    checked ? theme.colors.primary : theme.colors.primary};
 `
+// // @ts-ignore // TODO: Fix tslint error
+// ${HiddenCheckbox}:focus + & {
+//   box-shadow: 0 0 0 4px
+//     ${({ theme, checked }: Props) =>
+//       checked
+//         ? theme.colors.primary
+//         : theme.colors.primary;
+// }
+//
+// ${HiddenCheckbox}:disabled + & {
+//   background: ${(props: Props) => (props.disabled ? 'salmon' : 'papayawhip')};
+// }
 
 const Icon = styled.svg`
   fill: none;

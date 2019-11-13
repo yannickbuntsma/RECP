@@ -4,6 +4,7 @@ import { IoMdClose } from 'react-icons/io'
 
 import Checkbox from './Checkbox'
 
+// TODO: What's this?
 type TValue = any
 
 export interface Props {

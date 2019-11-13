@@ -6,10 +6,10 @@ import { MdAddShoppingCart } from 'react-icons/md'
 import { Ingredient, Recipe } from '../../types'
 
 import Hero from '../../elements/Hero'
-import Heading from '../Typography/Heading'
 import { IngredientList } from '../Ingredient/IngredientList'
 import { addToShoppingList } from '../../state/shopping-list/actions'
 import { Button } from '../../elements'
+import { Heading, Paragraph } from '../Typography'
 
 export interface DispatchProps {
   addToShoppingList: typeof addToShoppingList
@@ -36,7 +36,10 @@ const RecipeDetail: React.FC<Props> = ({
     ingredientList.map((item) => item.id)
   )
   const handleIngredientSelection = (ingredients: Ingredient[]) => {
-    console.log('handling', ingredients.map((item) => item.id))
+    console.log(
+      'handling',
+      ingredients.map((item) => item.id)
+    )
     setSelected(ingredients.map((item) => item.id))
   }
 
@@ -60,8 +63,9 @@ const RecipeDetail: React.FC<Props> = ({
       <Button onClick={() => handleAdd(ingredientList, selected)}>
         <MdAddShoppingCart style={{ height: '2rem', width: '2rem' }} />
       </Button>
+      <Paragraph>asdadlksda dadlajd klasjdlkajk</Paragraph>
       <ReactMarkdown source={instructions} />
-      <p>{instructions}</p>
+      <Paragraph>{instructions}</Paragraph>
     </div>
   )
 }
@@ -70,7 +74,4 @@ const mapDispatchToProps: DispatchProps = {
   addToShoppingList,
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RecipeDetail)
+export default connect(null, mapDispatchToProps)(RecipeDetail)

@@ -5,6 +5,7 @@ import { Ingredient as IngredientType } from '../../types'
 import List from '../../elements/List'
 import Ingredient from './Ingredient'
 import Checkbox from '../../elements/Checkbox'
+import { ThemeProps } from '../../theme/theme'
 
 export interface Props {
   ingredients: IngredientType[]
@@ -53,9 +54,4 @@ export const IngredientList: React.FC<Props> = ({
   )
 }
 
-export default styled(IngredientList)`
-  // @ts-ignore // TODO: Fix tslint error
-  ${Checkbox} {
-    margin-right: 1rem;
-  };
-`
+export default IngredientList

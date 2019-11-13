@@ -10,6 +10,8 @@ export interface Props {
   recipes: Recipe[]
 }
 
+// <Link key={recipe.id} href="/recipe/[id]" as={`recipe/${recipe.id}`}>
+
 const RecipeList: React.FC<Props> = ({ recipes }) => (
   <List>
     <StyledRecipeList>

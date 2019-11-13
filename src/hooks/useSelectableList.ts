@@ -1,47 +1,78 @@
 import * as React from 'react'
 
-export type SelectableListItemType = {
-  value: string | number
+export interface ListItem<T> {
+  id: string
   label: string | number
+  value: T
 }
 
-export const useSelectableList = <T extends SelectableListItemType>(
-  items: T[] = [],
-  initialState: T[] = []
+export interface SelectableListItem<T> extends ListItem<T> {
+  isSelected?: boolean
+}
+
+export const useSelectableList = <T>(
+  items: Array<ListItem<T>> = [],
+  initialState: Array<SelectableListItem<T>> = []
 ): [
-  T[],
-  React.Dispatch<React.SetStateAction<T[]>>,
-  (item: T) => void,
-  (item: T) => boolean,
-  (item: T) => T[],
-  (item: T) => T[],
-  React.Dispatch<React.SetStateAction<T[]>>
+  Array<SelectableListItem<T>>,
+  React.Dispatch<React.SetStateAction<Array<SelectableListItem<T>>>>,
+  {
+    toggleItem: (item: SelectableListItem<T>) => void
+    isItemSelected: (item: SelectableListItem<T>) => boolean
+    addItem: (item: SelectableListItem<T>) => Array<SelectableListItem<T>>
+    removeItem: (item: SelectableListItem<T>) => Array<SelectableListItem<T>>
+    clearItems: () => void
+    getSelectedOriginalItems: T[]
+  }
 ] => {
-  const [selected, setSelected] = React.useState(initialState)
+  const initial: Array<SelectableListItem<T>> = items.map(
+    (i, index) =>
+      initialState[index] || {
+        ...i,
+        isSelected: i.hasOwnProperty('isSelected') || false,
+      }
+  )
 
-  const isSelected = (item: T): boolean =>
-    !!selected.find((i) => i.value === item.value)
-  const addItem = (item: T): T[] => [...selected, item]
-  const removeItem = (item: T): any => {
-    const filtered = selected.filter((i) => i.value !== item.value)
-    console.log(`selected`, selected)
-    console.log(`filtered`, filtered)
+  const [list, setList] = React.useState(initial)
+
+  const isItemSelected = (item: SelectableListItem<T>): boolean =>
+    list.find((i) => i.value === item.value).isSelected
+
+  const addItem = (item: SelectableListItem<T>): Array<SelectableListItem<T>> => [
+    ...list,
+    item,
+  ]
+
+  const removeItem = (item: SelectableListItem<T>): any =>
+    list.filter((i) => i.value !== item.value)
+
+  const toggleItem = (item: SelectableListItem<T>): void => {
+    const newItems = list.reduce<Array<SelectableListItem<T>>>((acc, cur) => {
+      const isSelected =
+        item.value === cur.value ? !cur.isSelected : cur.isSelected
+
+      return [...acc, { ...cur, isSelected }]
+    }, [])
+
+    setList(newItems)
   }
 
-  const toggleItem = (item: T): void => {
-    const newItems = isSelected(item) ? removeItem(item) : addItem(item)
-    setSelected(newItems)
-  }
+  const clearItems = () => setList([])
 
-  const clearItems = () => setSelected([])
+  const getSelectedOriginalItems = list
+    .filter((i) => i.isSelected)
+    .map((i) => i.value)
 
   return [
-    selected,
-    setSelected,
-    toggleItem,
-    isSelected,
-    addItem,
-    removeItem,
-    clearItems,
+    list,
+    setList,
+    {
+      toggleItem,
+      isItemSelected,
+      addItem,
+      removeItem,
+      clearItems,
+      getSelectedOriginalItems,
+    },
   ]
 }

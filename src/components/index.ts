@@ -1,4 +1,4 @@
-export { default as Header, Props as HeaderProps } from './Header/Header'
+export { default as Header } from './Header/Header'
 export { default as Ingredient } from './Ingredient/Ingredient'
 export { default as IngredientList } from './Ingredient/IngredientList'
 export { default as RecipeCard } from './Recipe/RecipeCard'

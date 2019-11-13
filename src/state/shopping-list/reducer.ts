@@ -9,11 +9,9 @@ import { arrayToObject, objectToArray } from '../../utils'
 import { mergeIngredientObjects } from '../../utils'
 
 export type ShoppingListState = {
-  items:
-    | {
-        [key: string]: Ingredient
-      }
-    | {}
+  items: {
+    [key: string]: Ingredient
+  }
 }
 
 const initialState: ShoppingListState = {

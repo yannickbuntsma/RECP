@@ -15,6 +15,7 @@ const shoppingList = {
   items: {},
 }
 
-storiesOf('Header', module).add('default', () => (
-  <Header items={items} shoppingList={shoppingList} />
-))
+{
+  /*<Header items={items} shoppingList={shoppingList} />*/
+}
+storiesOf('Header', module).add('default', () => <div />)
