@@ -1,11 +1,12 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { Ingredient as IngredientType } from '../../types'
 
 import List from '../../elements/List'
 import Ingredient from './Ingredient'
 import Checkbox from '../../elements/Checkbox'
-import { ThemeProps } from '../../theme/theme'
+import { useTheme } from '../../theme/theme'
+import styled from '@emotion/styled'
+import Spacer from '../Spacing/Spacer'
 
 export interface Props {
   ingredients: IngredientType[]
@@ -20,6 +21,8 @@ export const IngredientList: React.FC<Props> = ({
   selectedIngredients,
   onChange,
 }) => {
+  const theme = useTheme()
+
   const isSelected = (id: Id): boolean =>
     selectedIngredients.some((ingredientId) => ingredientId === id)
 
@@ -38,20 +41,32 @@ export const IngredientList: React.FC<Props> = ({
 
   return (
     <List>
-      {ingredients.map((ingredient: IngredientType) => (
-        <li key={ingredient.id}>
-          <label>
-            <Checkbox
-              size="L"
-              checked={isSelected(ingredient.id)}
-              onChange={() => handleChange(ingredient.id)}
-            />
-            <Ingredient ingredient={ingredient} />
-          </label>
-        </li>
+      {ingredients.map((ingredient: IngredientType, index) => (
+        <>
+          {index !== 0 && <Spacer size="half" />}
+          <Item key={ingredient.id} style={{ color: theme.colors.text }}>
+            <LABEL>
+              <Checkbox
+                size="L"
+                checked={isSelected(ingredient.id)}
+                onChange={() => handleChange(ingredient.id)}
+              />
+              <Ingredient ingredient={ingredient} />
+            </LABEL>
+          </Item>
+        </>
       ))}
     </List>
   )
 }
 
 export default IngredientList
+
+const LABEL = styled.label`
+  display: flex;
+  align-items: center;
+`
+
+const Item = styled.li`
+  list-style: none;
+`

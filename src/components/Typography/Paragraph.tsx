@@ -1,9 +1,16 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { ThemeProviderProps, withTheme } from 'emotion-theming'
+import { Theme } from '../../theme/theme'
 
-const Paragraph: React.FC = ({ children }) => <p>{children}</p>
+export interface Props extends ThemeProviderProps<Theme> {
+  theme: Theme
+}
 
-export default styled(Paragraph)`
-  background: ${({ theme }) => theme.colors.text}
-  color: ${({ theme }) => theme.colors.text}
+const Paragraph: React.FC<Props> = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+  color: ${({ theme }) => theme.colors.text};
 `
+
+export default withTheme(Paragraph)

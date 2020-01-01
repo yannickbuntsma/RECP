@@ -21,41 +21,46 @@ const SelectableListItem: React.FC<Props> = ({
   onChange,
   className,
 }) => (
-  <li key={value} className={className}>
-    <label>
+  <LI key={value} className={className}>
+    <Label>
       <Checkbox
         size="L"
         checked={isSelected}
         onChange={() => onChange(value)}
       />
-      <span>{children}</span>
-    </label>
-  </li>
+      <Content>{children}</Content>
+    </Label>
+  </LI>
 )
 
-export default styled(SelectableListItem)`
+const LI = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
 
   & + & {
-    border-top: 1px solid #EEEEEE;
-  }
-
-  label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-
-  button {
-    cursor: pointer;
-  }
-
-  .icon {
-    width: 32px;
-    height: 32px;
+    border-top: 1px solid #eeeeee;
   }
 `
+
+const Label = styled.label`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+`
+
+const Content = styled.div`
+  width: 100%;
+`
+
+export default SelectableListItem
+//button {
+//  cursor: pointer;
+//}
+//
+//.icon {
+//  width: 32px;
+//  height: 32px;
+//}

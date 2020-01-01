@@ -19,8 +19,8 @@ export const useSelectableList = <T>(
   {
     toggleItem: (item: SelectableListItem<T>) => void
     isItemSelected: (item: SelectableListItem<T>) => boolean
-    addItem: (item: SelectableListItem<T>) => Array<SelectableListItem<T>>
-    removeItem: (item: SelectableListItem<T>) => Array<SelectableListItem<T>>
+    addItem: (item: SelectableListItem<T>) => void
+    removeItem: (item: SelectableListItem<T>) => void
     clearItems: () => void
     getSelectedOriginalItems: T[]
   }
@@ -38,13 +38,14 @@ export const useSelectableList = <T>(
   const isItemSelected = (item: SelectableListItem<T>): boolean =>
     list.find((i) => i.value === item.value).isSelected
 
-  const addItem = (item: SelectableListItem<T>): Array<SelectableListItem<T>> => [
-    ...list,
-    item,
-  ]
+  const addItem = (item: SelectableListItem<T>): void => {
+    setList([...list, item])
+  }
 
-  const removeItem = (item: SelectableListItem<T>): any =>
-    list.filter((i) => i.value !== item.value)
+  const removeItem = (item: SelectableListItem<T>): void => {
+    const newList = list.filter((i) => i.value !== item.value)
+    setList(newList)
+  }
 
   const toggleItem = (item: SelectableListItem<T>): void => {
     const newItems = list.reduce<Array<SelectableListItem<T>>>((acc, cur) => {

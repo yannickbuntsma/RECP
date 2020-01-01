@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from '@emotion/styled'
 
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
@@ -36,30 +37,45 @@ const ShoppingList: React.FC<Props> = ({ shoppingList, setShoppingList }) => {
     return <h3>You currently have no items in your shopping list</h3>
   }
 
-  const converted: Array<ListItem<IngredientType>> = items.map((i) => ({
-    id: i.id,
-    value: i,
-    label: i.name,
-  }))
+  // const converted: Array<ListItem<IngredientType>> = items.map((i) => ({
+  //   id: i.id,
+  //   value: i,
+  //   label: i.name,
+  // }))
+
+  const [
+    list,
+    setList,
+    { removeItem, toggleItem, isItemSelected },
+  ] = useSelectableList(items)
 
   const clearList = () => setShoppingList({ ingredients: [] })
 
   const handleToggle = (ingredientName: string) =>
     console.log({ ingredientName })
 
-  return converted.map((item) => (
-    <SelectableListItem
-      key={item.id}
-      value={item}
-      isSelected={false}
-      onChange={handleToggle}
-    >
-      {item.label}
-      <button onClick={() => console.log(item)}>
-        <IoMdClose className="icon" />
-      </button>
-    </SelectableListItem>
-  ))
+  return list.map((item) => {
+    return (
+      <SelectableListItem
+        key={item.label}
+        value={item}
+        isSelected={isItemSelected(item)}
+        onChange={() => toggleItem(item)}
+      >
+        <Content>
+          <Name>{item.label}</Name>
+          <Button
+            onClick={() => {
+              console.log(`item`, item)
+              removeItem(item)
+            }}
+          >
+            <IoMdClose className="icon" size={24} />
+          </Button>
+        </Content>
+      </SelectableListItem>
+    )
+  })
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -70,7 +86,18 @@ const mapDispatchToProps: DispatchProps = {
   setShoppingList,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShoppingList)
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
+
+const Button = styled.button`
+  margin-left: auto;
+`
+
+const Name = styled.p`
+  margin: 0;
+`
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`

@@ -1,18 +1,38 @@
 import * as React from 'react'
-import { Header } from '../src/components'
+import { FloatingMenu } from '../src/components'
+import { MdHome, MdShoppingCart } from 'react-icons/md'
+import styled from '@emotion/styled'
 
 export interface Props {}
 
-const menuItems: any = [
-  { label: 'Home', href: '/' },
-  { label: 'Shopping List', href: '/shopping-list' },
+const iconProps = {
+  className: 'icon',
+  size: 36,
+}
+
+const menuItems = [
+  {
+    label: 'Home',
+    href: '/',
+    icon: <MdHome {...iconProps} />,
+  },
+  {
+    label: 'Shopping List',
+    href: '/shopping-list',
+    icon: <MdShoppingCart {...iconProps} />,
+  },
 ]
 
 const Layout: React.FC<Props> = ({ children }) => (
-  <>
-    <Header items={menuItems} />
-    <main>{children}</main>
-  </>
+  <Main>
+    <FloatingMenu items={menuItems} />
+    {children}
+  </Main>
 )
 
 export default Layout
+
+const Main = styled.main`
+  min-height: 100vh;
+  max-width: 100vw;
+`

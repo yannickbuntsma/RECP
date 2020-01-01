@@ -18,15 +18,19 @@ const RecipeCard: React.FC<Props> = ({
 }) => (
   <Card>
     <StyledRecipeCard>
-      <Heading.H1>{title}</Heading.H1>
+      <Heading.H2>{title}</Heading.H2>
       {image && <Image src={image.fields.file.url} alt={title} />}
       <RecipeCardDetails>
-        <p>Voorbereiding: {preparationTime} min</p>
-        <p>Kooktijd: {cookingTime} min</p>
+        <InfoItem>Voorbereiding: {preparationTime} min</InfoItem>
+        <InfoItem>Kooktijd: {cookingTime} min</InfoItem>
       </RecipeCardDetails>
     </StyledRecipeCard>
   </Card>
 )
+
+const InfoItem = styled.p`
+  color: ${({ theme }) => theme.colors.inverseText};
+`
 
 const StyledRecipeCard = styled.div`
   position: relative;
@@ -37,7 +41,8 @@ const StyledRecipeCard = styled.div`
   min-height: 300px;
   overflow: hidden;
   cursor: pointer;
-  h1 {
+  h2 {
+    font-family: 'Oregano', cursive;
     color: ${({ theme }) => theme.colors.primary};
   }
 

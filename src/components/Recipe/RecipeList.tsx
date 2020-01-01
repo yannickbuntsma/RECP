@@ -13,26 +13,29 @@ export interface Props {
 // <Link key={recipe.id} href="/recipe/[id]" as={`recipe/${recipe.id}`}>
 
 const RecipeList: React.FC<Props> = ({ recipes }) => (
-  <List>
-    <StyledRecipeList>
-      {recipes.map((recipe) => (
-        <Link key={recipe.id} href={`recipe/${recipe.id}`}>
-          <StyledRecipeListCard key={recipe.title}>
-            <RecipeCard recipe={recipe} />
-          </StyledRecipeListCard>
-        </Link>
-      ))}
-    </StyledRecipeList>
-  </List>
+  <StyledRecipeList>
+    {recipes.map((recipe) => (
+      <Link key={recipe.id} href={`recipe/${recipe.id}`}>
+        <StyledRecipeListCard key={recipe.title}>
+          <RecipeCard recipe={recipe} />
+        </StyledRecipeListCard>
+      </Link>
+    ))}
+  </StyledRecipeList>
 )
 
-const StyledRecipeList = styled.div`
-  display: flex;
+const StyledRecipeListCard = styled.li`
+  list-style: none;
+  margin: 1rem;
+
+  //@media (min-width: 768px) {
+  //  flex: 0 0 30%;
+  //}
 `
 
-const StyledRecipeListCard = styled.div`
-  flex: 0 0 30%;
-  margin: 1rem;
+const StyledRecipeList = styled(List)`
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export default RecipeList

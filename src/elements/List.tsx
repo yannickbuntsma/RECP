@@ -7,4 +7,8 @@ export const List: React.FC = ({ children }) => {
 
 export default styled(List)`
   list-style: none;
+
+  > * {
+    list-style: none;
+  }
 `

@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 import { Ingredient as IngredientType } from '../../types'
+import { Paragraph } from '../Typography'
 
 export interface Props {
   ingredient: {
@@ -14,9 +15,9 @@ export interface Props {
 const Ingredient: React.FC<Props> = ({
   ingredient: { amount, unit, name },
 }) => (
-  <span>
+  <Paragraph>
     {amount} {unit} {name}
-  </span>
+  </Paragraph>
 )
 
-export default styled(Ingredient)``
+export default Ingredient

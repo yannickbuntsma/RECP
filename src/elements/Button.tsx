@@ -8,13 +8,19 @@ export interface Props {
 
 export const Button: React.FC<Props> = ({ children, onClick }) => {
   return (
-    <button className="button" onClick={onClick}>
+    <BTN className="button" onClick={onClick}>
       {children}
-    </button>
+    </BTN>
   )
 }
 
-export default styled(Button)`
+export default Button
+
+const BTN = styled.button`
+  border: 0;
+  margin: 0;
+  padding: 0;
+
   padding: 1rem 2rem;
-  background: ${({ background }) => background};
+  background: ${({ theme }) => theme.colors.primary};
 `

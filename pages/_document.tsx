@@ -12,6 +12,7 @@ class AppDocument extends Document {
   render() {
     return (
       <html>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Oregano&display=swap"
           rel="stylesheet"
@@ -20,7 +21,6 @@ class AppDocument extends Document {
           styles={`
           html {
             box-sizing: border-box;
-            background: ${theme.colors.background}
           }
 
            *,
@@ -32,7 +32,7 @@ class AppDocument extends Document {
              font-family: sans-serif;
           }`}
         />
-        <body className="custom_class">
+        <body>
           <Main />
           <NextScript />
         </body>

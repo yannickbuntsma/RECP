@@ -10,6 +10,8 @@ import { IngredientList } from '../Ingredient/IngredientList'
 import { addToShoppingList } from '../../state/shopping-list/actions'
 import { Button } from '../../elements'
 import { Heading, Paragraph } from '../Typography'
+import Spacer from '../Spacing/Spacer'
+import styled from '@emotion/styled'
 
 export interface DispatchProps {
   addToShoppingList: typeof addToShoppingList
@@ -52,23 +54,46 @@ const RecipeDetail: React.FC<Props> = ({
   }
 
   return (
-    <div>
+    <>
       <Hero src={image.fields.file.url} alt={title} height={300} />
-      <Heading.H1>{title}</Heading.H1>
-      <IngredientList
-        ingredients={ingredientList}
-        selectedIngredients={selected}
-        onChange={handleIngredientSelection}
-      />
-      <Button onClick={() => handleAdd(ingredientList, selected)}>
-        <MdAddShoppingCart style={{ height: '2rem', width: '2rem' }} />
-      </Button>
-      <Paragraph>asdadlksda dadlajd klasjdlkajk</Paragraph>
-      <ReactMarkdown source={instructions} />
-      <Paragraph>{instructions}</Paragraph>
-    </div>
+      <Spacer size="single" />
+      <Wrapper>
+        <Title>{title}</Title>
+        <Spacer size="single" />
+        <IngredientList
+          ingredients={ingredientList}
+          selectedIngredients={selected}
+          onChange={handleIngredientSelection}
+        />
+        <Spacer size="double" />
+        <AddToCartButton onClick={() => handleAdd(ingredientList, selected)}>
+          <Text>Voeg selectie toe</Text>
+          <MdAddShoppingCart style={{ height: '2rem', width: '2rem' }} />
+        </AddToCartButton>
+        <Spacer size="double" />
+        <Paragraph>
+          <ReactMarkdown source={instructions} />
+        </Paragraph>
+      </Wrapper>
+    </>
   )
 }
+
+const AddToCartButton = styled(Button)`
+  display: flex;
+  align-items: center;
+`
+
+const Title = styled(Heading.H1)`
+  font-family: 'Oregano', cursive;
+`
+
+const Text = styled.span``
+
+const Wrapper = styled.div`
+  margin: 0 1rem;
+  padding-bottom: 150px;
+`
 
 const mapDispatchToProps: DispatchProps = {
   addToShoppingList,

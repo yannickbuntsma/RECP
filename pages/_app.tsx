@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { NextPageContext } from 'next'
-import App, { AppContext, Container } from 'next/app'
+import App, { AppContext } from 'next/app'
 import { ThemeProvider } from 'emotion-theming'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -27,9 +26,7 @@ export default class MyApp extends App {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={store.persistor}>
-            <Container>
-              <Component {...pageProps} />
-            </Container>
+            <Component {...pageProps} />
           </PersistGate>
         </Provider>
       </ThemeProvider>
