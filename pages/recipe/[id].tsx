@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { AppContext } from 'next/app'
 
-import { Recipe } from '../src/types'
-import getRecipe from '../src/cms/get-recipe'
+import { Recipe } from '../../src/types'
+import getRecipe from '../../src/cms/get-recipe'
 
-import RecipeDetail from '../src/components/Recipe/RecipeDetail'
-import Layout from './_layout'
+import RecipeDetail from '../../src/components/Recipe/RecipeDetail'
+import Layout from '../_layout'
 
 export interface Props {
   recipe: Recipe
