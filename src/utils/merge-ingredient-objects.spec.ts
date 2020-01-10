@@ -1,8 +1,8 @@
-import { IngredientObject } from '../state/types'
+import { ShoppingListIngredient } from '../state/types'
 import { mergeIngredientObjects } from './merge-ingredient-objects'
 import { logger } from './test-logger'
 
-const simpleExisting: IngredientObject = {
+const simpleExisting: ShoppingListIngredient = {
   paprika: {
     id: 'some-id',
     amount: 2,
@@ -15,7 +15,7 @@ const simpleExisting: IngredientObject = {
   },
 }
 
-const simpleAddition: IngredientObject = {
+const simpleAddition: ShoppingListIngredient = {
   paprika: {
     id: 'some-id',
     amount: 3,
@@ -28,7 +28,7 @@ const simpleAddition: IngredientObject = {
   },
 }
 
-const complexExisting: IngredientObject = {
+const complexExisting: ShoppingListIngredient = {
   paprika: {
     id: 'some-id',
     amount: 1,
@@ -41,7 +41,7 @@ const complexExisting: IngredientObject = {
   },
 }
 
-const complexAddition: IngredientObject = {
+const complexAddition: ShoppingListIngredient = {
   paprika: {
     id: 'some-id',
     amount: 1,

@@ -1,16 +1,17 @@
+import { on, reducer } from 'ts-action'
 import {
-  Action as ShoppingListAction,
-  ADD_TO_SHOPPING_LIST,
-  REMOVE_FROM_SHOPPING_LIST,
-  SET_SHOPPING_LIST,
+  addToShoppingList,
+  removeFromShoppingList,
+  setShoppingList,
+  toggleShoppingListItem,
 } from './actions'
-import { Ingredient } from '../../types'
 import { arrayToObject, objectToArray } from '../../utils'
 import { mergeIngredientObjects } from '../../utils'
+import { ShoppingListIngredient } from '../types'
 
 export type ShoppingListState = {
   items: {
-    [key: string]: Ingredient
+    [key: string]: ShoppingListIngredient[0]
   }
 }
 
@@ -18,38 +19,48 @@ const initialState: ShoppingListState = {
   items: {},
 }
 
-export const shoppingListReducer = (
-  state: ShoppingListState = initialState,
-  action: ShoppingListAction
-) => {
-  switch (action.type) {
-    case ADD_TO_SHOPPING_LIST:
-      const { ingredients } = action.payload
+export const shoppingListReducer = reducer(
+  initialState,
 
-      return {
-        ...state,
-        items: mergeIngredientObjects(state.items, arrayToObject(ingredients)),
-      }
+  on(addToShoppingList, (state, { payload }) => ({
+    ...state,
+    items: mergeIngredientObjects(
+      state.items,
+      arrayToObject(payload.ingredients)
+    ),
+  })),
 
-    case REMOVE_FROM_SHOPPING_LIST:
-      const { ingredient } = action.payload
+  on(removeFromShoppingList, (state, { payload }) => {
+    const { name } = payload
 
-      const filteredList = objectToArray(state.items).filter(
-        ({ name }) => name !== ingredient.name
-      )
-      return {
-        ...state,
-        items: filteredList,
-      }
+    const filteredList = objectToArray(state.items).filter(
+      (ingredient) => ingredient.name !== name
+    )
 
-    case SET_SHOPPING_LIST:
-      console.log(action.payload)
-      return {
-        ...state,
-        items: arrayToObject(action.payload.ingredients),
-      }
+    return {
+      ...state,
+      items: arrayToObject(filteredList),
+    }
+  }),
 
-    default:
-      return state
-  }
-}
+  on(toggleShoppingListItem, (state, { payload }) => {
+    const { name } = payload
+    const item = state.items[name]
+
+    return {
+      ...state,
+      items: {
+        ...state.items,
+        [name]: {
+          ...item,
+          isSelected: !item.isSelected,
+        },
+      },
+    }
+  }),
+
+  on(setShoppingList, (state, { payload }) => ({
+    ...state,
+    items: arrayToObject(payload.ingredients),
+  }))
+)

@@ -1,4 +1,4 @@
-import { IngredientObject } from '../state/types'
+import { ShoppingListIngredient } from '../state/types'
 import { arrayToObject, convertAmountToNumber, objectToArray } from './convert-ingredient-list'
 import { Ingredient, ServerRecipe } from '../types'
 
@@ -14,7 +14,7 @@ const testStringAmounts: Array<Ingredient<string>> = [
   { id: 'some-id', name: 'water', amount: '1', unit: 'l' },
 ]
 
-const testObjectNumberAmounts: IngredientObject = {
+const testObjectNumberAmounts: ShoppingListIngredient = {
   paprika: {
     id: 'some-id',
     amount: 3,

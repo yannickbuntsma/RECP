@@ -1,5 +1,5 @@
 import { Ingredient, Recipe, ServerRecipe } from '../types'
-import { IngredientObject } from '../state/types'
+import { ShoppingListIngredient } from '../state/types'
 
 export const convertAmountToNumber = (recipe: ServerRecipe): Recipe => ({
   ...recipe,
@@ -9,7 +9,7 @@ export const convertAmountToNumber = (recipe: ServerRecipe): Recipe => ({
   })),
 })
 
-export const arrayToObject = (array: Ingredient[]): IngredientObject =>
+export const arrayToObject = (array: Ingredient[]): ShoppingListIngredient =>
   array.reduce((acc, ingredient) => {
     const { name, ...rest } = ingredient
 
@@ -19,8 +19,11 @@ export const arrayToObject = (array: Ingredient[]): IngredientObject =>
     }
   }, {})
 
-export const objectToArray = (object: IngredientObject): Ingredient[] =>
-  Object.entries(object).map(([name, { ...rest }]) => ({
+export const objectToArray = (
+  object: ShoppingListIngredient
+): Array<Ingredient & { isSelected?: boolean }> =>
+  Object.entries(object).map(([name, { isSelected, ...rest }]) => ({
     ...rest,
+    isSelected,
     name,
   }))

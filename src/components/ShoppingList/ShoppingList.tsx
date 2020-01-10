@@ -8,10 +8,10 @@ import {
   GetShoppingList,
   getShoppingList,
 } from '../../state/shopping-list/selectors'
-import { setShoppingList } from '../../state/shopping-list/actions'
-import { ListItem, useSelectableList } from '../../hooks/useSelectableList'
-import { Ingredient as IngredientType } from '../../types'
-import { Ingredient } from '../Ingredient'
+import {
+  removeFromShoppingList,
+  toggleShoppingListItem,
+} from '../../state/shopping-list/actions'
 import { IoMdClose } from 'react-icons/io'
 import SelectableListItem from '../../elements/SelectableListItem'
 
@@ -20,13 +20,18 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  setShoppingList: typeof setShoppingList
+  toggleShoppingListItem: typeof toggleShoppingListItem
+  removeFromShoppingList: typeof removeFromShoppingList
 }
 
 export interface Props extends StateProps, DispatchProps {}
 
 // @ts-ignore
-const ShoppingList: React.FC<Props> = ({ shoppingList, setShoppingList }) => {
+const ShoppingList: React.FC<Props> = ({
+  shoppingList,
+  toggleShoppingListItem,
+  removeFromShoppingList,
+}) => {
   const items = objectToArray(shoppingList.items).map((item) => ({
     ...item,
     value: item.name,
@@ -37,37 +42,22 @@ const ShoppingList: React.FC<Props> = ({ shoppingList, setShoppingList }) => {
     return <h3>You currently have no items in your shopping list</h3>
   }
 
-  // const converted: Array<ListItem<IngredientType>> = items.map((i) => ({
-  //   id: i.id,
-  //   value: i,
-  //   label: i.name,
-  // }))
+  return items.map((item) => {
+    const { name } = item
 
-  const [
-    list,
-    setList,
-    { removeItem, toggleItem, isItemSelected },
-  ] = useSelectableList(items)
-
-  const clearList = () => setShoppingList({ ingredients: [] })
-
-  const handleToggle = (ingredientName: string) =>
-    console.log({ ingredientName })
-
-  return list.map((item) => {
     return (
       <SelectableListItem
         key={item.label}
         value={item}
-        isSelected={isItemSelected(item)}
-        onChange={() => toggleItem(item)}
+        isSelected={item.isSelected}
+        onChange={() => toggleShoppingListItem({ name })}
       >
         <Content>
           <Name>{item.label}</Name>
           <Button
             onClick={() => {
               console.log(`item`, item)
-              removeItem(item)
+              removeFromShoppingList({ name })
             }}
           >
             <IoMdClose className="icon" size={24} />
@@ -83,7 +73,8 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 const mapDispatchToProps: DispatchProps = {
-  setShoppingList,
+  toggleShoppingListItem,
+  removeFromShoppingList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)

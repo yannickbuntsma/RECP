@@ -1,4 +1,4 @@
-// import * as React from 'react'
+import * as React from 'react'
 // import {
 //   SelectableListItemType,
 //   useSelectableList,
@@ -17,16 +17,17 @@
 // }
 //
 // // @ts-ignore
+const SelectableList: React.FC = () => (<p>SelectableList</p>)
 // const SelectableList: React.FC<Props> = ({ items, initialSelected = [], onChange }) => {
 //   const [stateItems, setStateItems] = React.useState(items)
-//   const [
-//     selected,
-//     setSelected,
-//     toggleItem,
-//     isSelected,
-//     addItem,
-//     removeItem,
-//   ] = useSelectableList(stateItems, initialSelected)
+//   // const [
+//   //   selected,
+//   //   setSelected,
+//   //   toggleItem,
+//   //   isSelected,
+//   //   addItem,
+//   //   removeItem,
+//   // ] = useSelectableList(stateItems, initialSelected)
 //
 //   const handleDelete = (item: Item) => {
 //     const filteredItems = stateItems.filter((i) => i.value !== item.value)
@@ -49,4 +50,4 @@
 //   ))
 // }
 //
-// export default SelectableList
+export default SelectableList

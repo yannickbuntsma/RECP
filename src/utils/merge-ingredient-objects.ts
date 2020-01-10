@@ -1,11 +1,11 @@
-import { IngredientObject } from '../state/types'
+import { ShoppingListIngredient } from '../state/types'
 import { Ingredient } from '../types'
 import { convertUnit } from './convert-unit'
 
 export const mergeIngredientObjects = (
-  existingObj: IngredientObject,
-  additionObj: IngredientObject
-): IngredientObject =>
+  existingObj: ShoppingListIngredient,
+  additionObj: ShoppingListIngredient
+): ShoppingListIngredient =>
   Object.keys({ ...existingObj, ...additionObj }).reduce((acc, name) => {
     const existing: Omit<Ingredient, 'name'> = existingObj[name]
     const addition: Omit<Ingredient, 'name'> = additionObj[name]

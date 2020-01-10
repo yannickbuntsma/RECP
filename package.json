@@ -54,6 +54,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
+    "ts-action": "^11.0.0",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
