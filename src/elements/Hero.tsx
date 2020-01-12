@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 import { Image } from './Image'
 
-export interface Props {
+export type Props = {
   src: string
   alt: string
   height: number

@@ -4,7 +4,7 @@ import { Recipe } from '../src/types'
 import { RecipeList } from '../src/components/Recipe'
 import Layout from './_layout'
 
-export interface Props {}
+export type Props = {}
 
 const Home: React.FC<Props> = () => {
   const [data, setData] = useState<Recipe[]>([] as Recipe[])

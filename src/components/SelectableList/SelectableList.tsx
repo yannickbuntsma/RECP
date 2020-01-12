@@ -10,7 +10,7 @@ import * as React from 'react'
 //   [key: string]: any
 // }
 //
-// export interface Props {
+// export type Props = {
 //   items: Item[]
 //   initialSelected?: Item[]
 //   onChange?: (stateItems: Item[]) => void

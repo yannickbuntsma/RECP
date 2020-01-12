@@ -1,26 +1,27 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { DefaultPropTypes } from '../default-prop-types'
 
-export interface Props {
+export type Props = {
   onClick: (args?: any) => void
-  background?: string
-}
+} & DefaultPropTypes
 
-export const Button: React.FC<Props> = ({ children, onClick }) => {
-  return (
-    <BTN className="button" onClick={onClick}>
-      {children}
-    </BTN>
-  )
-}
+export const Button: React.FC<Props> = ({ children, onClick, ...rest }) => (
+  <StyledButton onClick={onClick} {...rest}>
+    {children}
+  </StyledButton>
+)
 
 export default Button
 
-const BTN = styled.button`
-  border: 0;
+const StyledButton = styled.button`
   margin: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
   padding: 0;
-
-  padding: 1rem 2rem;
-  background: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
 `

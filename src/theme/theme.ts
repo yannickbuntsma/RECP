@@ -5,8 +5,8 @@ export const lightTheme = {
     text: '#000000',
     inverseText: '#f1f1ea',
     background: '#f1f1ea',
-    primary: '#f0448c',
-    secondary: '#863d75',
+    primary: '#d4ee6e',
+    secondary: '#eee64e',
     grey: '#a5a39b',
   },
 }

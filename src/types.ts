@@ -4,7 +4,19 @@
 //   return Array(iterations).fill(start).map((item, index) => item + (increment * index))
 // }
 
-export type Unit = 'tsp' | 'tbsp' | 'ml' | 'l' | 'g' | 'kg' | 'pieces' | 'pinch'
+export type Unit =
+  | 'tsp'
+  | 'tbsp'
+  | 'ml'
+  | 'l'
+  | 'g'
+  | 'kg'
+  | 'pieces'
+  | 'pinch'
+  | 'cm'
+  | 'bag'
+  | 'hand'
+  | 'clove'
 
 type Tag = string
 

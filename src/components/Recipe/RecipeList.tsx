@@ -3,12 +3,14 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 
 import { Recipe } from '../../types'
+import { DefaultPropTypes } from '../../default-prop-types'
+
 import RecipeCard from './RecipeCard'
 import List from '../../elements/List'
 
-export interface Props {
+export type Props = {
   recipes: Recipe[]
-}
+} & DefaultPropTypes
 
 // <Link key={recipe.id} href="/recipe/[id]" as={`recipe/${recipe.id}`}>
 
@@ -27,15 +29,13 @@ const RecipeList: React.FC<Props> = ({ recipes }) => (
 const StyledRecipeListCard = styled.li`
   list-style: none;
   margin: 1rem;
-
-  //@media (min-width: 768px) {
-  //  flex: 0 0 30%;
-  //}
+  width: 100%;
 `
 
 const StyledRecipeList = styled(List)`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 `
 
 export default RecipeList

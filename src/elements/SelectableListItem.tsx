@@ -7,7 +7,7 @@ import Checkbox from './Checkbox'
 // TODO: What's this?
 type TValue = any
 
-export interface Props {
+export type Props = {
   isSelected: boolean
   value: TValue
   onChange: (value: TValue) => void

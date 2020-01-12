@@ -8,7 +8,7 @@ import { Ingredient, Recipe } from '../../types'
 import Hero from '../../elements/Hero'
 import { IngredientList } from '../Ingredient/IngredientList'
 import { addToShoppingList } from '../../state/shopping-list/actions'
-import { Button } from '../../elements'
+import { Button } from '../Button/Button'
 import { Heading, Paragraph } from '../Typography'
 import Spacer from '../Spacing/Spacer'
 import styled from '@emotion/styled'
@@ -82,6 +82,8 @@ const RecipeDetail: React.FC<Props> = ({
 const AddToCartButton = styled(Button)`
   display: flex;
   align-items: center;
+  color: white;
+  font-weight: bold;
 `
 
 const Title = styled(Heading.H1)`

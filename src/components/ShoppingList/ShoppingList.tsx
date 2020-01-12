@@ -14,6 +14,8 @@ import {
 } from '../../state/shopping-list/actions'
 import { IoMdClose } from 'react-icons/io'
 import SelectableListItem from '../../elements/SelectableListItem'
+import { getUnitLabel } from '../../i18n/get-unit-label'
+import { Button } from '../../elements'
 
 export interface StateProps {
   shoppingList: GetShoppingList
@@ -32,11 +34,16 @@ const ShoppingList: React.FC<Props> = ({
   toggleShoppingListItem,
   removeFromShoppingList,
 }) => {
-  const items = objectToArray(shoppingList.items).map((item) => ({
-    ...item,
-    value: item.name,
-    label: `${item.amount} ${item.unit} ${item.name}`,
-  }))
+  const items = objectToArray(shoppingList.items).map((item) => {
+    const { amount, unit, name } = item
+    const unitLabel = getUnitLabel(unit, amount)
+
+    return {
+      ...item,
+      value: item.name,
+      label: `${amount} ${unitLabel} ${name}`,
+    }
+  })
 
   if (items.length < 1) {
     return <h3>You currently have no items in your shopping list</h3>
@@ -54,14 +61,9 @@ const ShoppingList: React.FC<Props> = ({
       >
         <Content>
           <Name>{item.label}</Name>
-          <Button
-            onClick={() => {
-              console.log(`item`, item)
-              removeFromShoppingList({ name })
-            }}
-          >
+          <DeleteButton onClick={() => removeFromShoppingList({ name })}>
             <IoMdClose className="icon" size={24} />
-          </Button>
+          </DeleteButton>
         </Content>
       </SelectableListItem>
     )
@@ -79,9 +81,9 @@ const mapDispatchToProps: DispatchProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
 
-const Button = styled.button`
-  margin-left: auto;
-`
+const DeleteButton = styled(Button)({
+  'margin-left': 'auto',
+})
 
 const Name = styled.p`
   margin: 0;

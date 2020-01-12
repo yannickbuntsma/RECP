@@ -8,7 +8,7 @@ import { useTheme } from '../../theme/theme'
 import styled from '@emotion/styled'
 import Spacer from '../Spacing/Spacer'
 
-export interface Props {
+export type Props = {
   ingredients: IngredientType[]
   selectedIngredients: Array<IngredientType['id']>
   onChange?: (selected: IngredientType[]) => unknown

@@ -8,6 +8,7 @@ import { ThemeProps } from '../../theme/theme'
 import { Card, Image } from '../../elements'
 import { Heading } from '../Typography'
 import RecipeCardDetails from './RecipeCardDetails'
+import { BORDER_RADIUS } from '../../styling/constants'
 
 export interface Props extends ThemeProps {
   recipe: Recipe
@@ -41,6 +42,9 @@ const StyledRecipeCard = styled.div`
   min-height: 300px;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 10px 12px -8px rgba(0, 0, 0, 0.25);
+  border-radius: ${BORDER_RADIUS};
+
   h2 {
     font-family: 'Oregano', cursive;
     color: ${({ theme }) => theme.colors.primary};

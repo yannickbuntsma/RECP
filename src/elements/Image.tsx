@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-export interface Props {
+export type Props = {
   src: string
   alt?: string
   height?: number

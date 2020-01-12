@@ -1,6 +1,9 @@
 import * as React from 'react'
-import { useTheme } from '../../theme/theme'
 import styled from '@emotion/styled'
+
+import { useTheme } from '../../theme/theme'
+import { zIndexLevel } from '../../styling/utils/z-index-level'
+import { MENU_HEIGHT } from '../../styling/constants'
 
 type MenuItem = {
   label: string
@@ -8,17 +11,21 @@ type MenuItem = {
   icon?: any
 }
 
-export interface Props {
+export type Props = {
   items: MenuItem[]
 }
 
 const Floatingmenu: React.FC<Props> = ({ items }) => {
   const theme = useTheme()
+
   return (
     <Menu>
       {items.map((item) => (
-        <MenuItem key={item.label} title={item.label}>
-          <a href={item.href}>{item.icon}</a>
+        <MenuItem key={item.label}>
+          <MenuItemContent href={item.href}>
+            <Icon>{item.icon}</Icon>
+            <Text>{item.label}</Text>
+          </MenuItemContent>
         </MenuItem>
       ))}
     </Menu>
@@ -29,16 +36,32 @@ export default Floatingmenu
 
 const Menu = styled.ul`
   list-style: none;
-  background-color: mistyrose;
+  background-color: white;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   position: fixed;
-  bottom: 50px;
+  width: 100%;
+  bottom: 0;
   display: flex;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 500px;
   padding: 0 1rem;
+  z-index: ${zIndexLevel(1)};
 `
 
 const MenuItem = styled.li`
-  padding: 1rem;
+  width: 100%;
+`
+
+const MenuItemContent = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: ${MENU_HEIGHT}px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: darkgrey;
+`
+
+const Icon = styled.span``
+
+const Text = styled.span`
+  display: block;
 `

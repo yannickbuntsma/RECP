@@ -7,7 +7,7 @@ import getRecipe from '../../src/cms/get-recipe'
 import RecipeDetail from '../../src/components/Recipe/RecipeDetail'
 import Layout from '../_layout'
 
-export interface Props {
+export type Props = {
   recipe: Recipe
 }
 
