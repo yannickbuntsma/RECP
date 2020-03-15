@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import client from '../src/cms/contentful-client'
 import { Recipe } from '../src/types'
 import { RecipeList } from '../src/components/Recipe'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { FloatingMenu } from '../src/components'
-import { MdHome, MdShoppingCart } from 'react-icons/md'
+import { MdHome, MdPersonPin, MdShoppingCart } from 'react-icons/md'
 import styled from '@emotion/styled'
 import { MENU_HEIGHT } from '../src/styling/constants'
 
@@ -21,6 +21,11 @@ const menuItems = [
     label: 'Shopping List',
     href: '/shopping-list',
     icon: <MdShoppingCart {...iconProps} />,
+  },
+  {
+    label: 'Profile',
+    href: '/profile',
+    icon: <MdPersonPin {...iconProps} />,
   },
 ]
 

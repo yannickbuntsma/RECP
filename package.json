@@ -9,10 +9,10 @@
   "private": true,
   "scripts": {
     "clean": "rimraf .next dist",
-    "dev": "next -p 8000",
+    "dev": "yarn clean && next -p 8000",
     "build": "next build",
     "start-build": "next start -p 8000",
-    "start": "yarn serve",
+    "start": "yarn dev",
     "fix": "yarn fix:js",
     "fix:js": "prettier --write ./**/*.{ts,tsx} --parser typescript",
     "lint": "tslint --project .",
@@ -24,7 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commmit": "yarn fix"
+      "pre-commit": "yarn fix"
     }
   },
   "jest": {
@@ -35,7 +35,6 @@
     "@emotion/styled": "^11.0.0-next.4",
     "@types/express": "^4.16.1",
     "@types/react-redux": "^7.0.5",
-    "axios": "^0.19.0",
     "babel-plugin-emotion": "^11.0.0-next.4",
     "contentful": "^7.5.0",
     "dotenv": "^8.2.0",
@@ -60,7 +59,8 @@
     "tslint-loader": "^3.5.4",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "use-auth0-hooks": "^0.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
