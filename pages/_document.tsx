@@ -14,7 +14,7 @@ class AppDocument extends Document {
       <html>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Oregano&display=swap"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Oregano&display=swap"
           rel="stylesheet"
         />
         <Global

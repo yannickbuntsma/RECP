@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import { withTheme } from 'emotion-theming'
-import { MdShoppingCart } from 'react-icons/md'
+
+const Basket = require('../../icons/shopping-basket_outline.svg')
 
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
@@ -39,7 +40,7 @@ export const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
         <span className="shopping-list-icon__notification">
           {objectToArray(shoppingList.items).length}
         </span>
-        <MdShoppingCart className="icon" />
+        <Basket.default className="icon" />
       </li>
       <div className="bottom-bar" />
     </ul>

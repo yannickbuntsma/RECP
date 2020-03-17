@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 
+const Basket = require('../../icons/shopping-basket_outline.svg')
+
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
 import {
@@ -12,7 +14,6 @@ import {
   removeFromShoppingList,
   toggleShoppingListItem,
 } from '../../state/shopping-list/actions'
-import { IoMdClose } from 'react-icons/io'
 import SelectableListItem from '../../elements/SelectableListItem'
 import { getUnitLabel } from '../../i18n/get-unit-label'
 import { Button } from '../../elements'
@@ -62,7 +63,7 @@ const ShoppingList: React.FC<Props> = ({
         <Content>
           <Name>{item.label}</Name>
           <DeleteButton onClick={() => removeFromShoppingList({ name })}>
-            <IoMdClose className="icon" size={24} />
+            <Basket.default className="icon" size={24} />
           </DeleteButton>
         </Content>
       </SelectableListItem>
