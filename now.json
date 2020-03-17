@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "SELF_URL": "recp.yannickbuntsma.now.sh",
+      "SELF_URL": "https://recp.yannickbuntsma.now.sh",
       "CONTENTFUL_SPACE_ID": "@contentful_space_id",
       "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token",
       "AUTH0_DOMAIN": "@auth0_domain",

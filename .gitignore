@@ -3,6 +3,9 @@
 .vscode/
 .99999/
 
+# Now
+.now/
+
 # Next.js
 .next
 dist
