@@ -1,8 +1,12 @@
 const webpack = require('webpack')
+const withPWA = require('next-pwa')
 
 require('dotenv').config()
 
-module.exports = {
+module.exports = withPWA({
+  pwa: {
+    dest: 'public'
+  },
   webpack: (config) => {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
@@ -13,4 +17,5 @@ module.exports = {
 
     return config
   },
-}
+})
+
