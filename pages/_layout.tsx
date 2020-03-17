@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { FloatingMenu } from '../src/components'
-import { MdHome, MdPersonPin, MdShoppingCart } from 'react-icons/md'
 import styled from '@emotion/styled'
+
+const Basket = require('../src/icons/shopping-basket_outline.svg')
+const Cutlery = require('../src/icons/utensils_outline.svg')
+const User = require('../src/icons/user-circle_outline.svg')
 
 export type Props = {}
 
@@ -12,19 +15,19 @@ const iconProps = {
 
 const menuItems = [
   {
-    label: 'Home',
+    label: 'Recipes',
     href: '/',
-    icon: <MdHome {...iconProps} />,
+    icon: <Cutlery.default {...iconProps} />,
   },
   {
     label: 'Shopping List',
     href: '/shopping-list',
-    icon: <MdShoppingCart {...iconProps} />,
+    icon: <Basket.default {...iconProps} />,
   },
   {
     label: 'Profile',
     href: '/profile',
-    icon: <MdPersonPin {...iconProps} />,
+    icon: <User.default {...iconProps} />,
   },
 ]
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
-import { MdAddShoppingCart } from 'react-icons/md'
+
+const Basket = require('../../icons/shopping-basket_outline.svg')
 
 import { Ingredient, Recipe } from '../../types'
 
@@ -68,7 +69,7 @@ const RecipeDetail: React.FC<Props> = ({
         <Spacer size="double" />
         <AddToCartButton onClick={() => handleAdd(ingredientList, selected)}>
           <Text>Voeg selectie toe</Text>
-          <MdAddShoppingCart style={{ height: '2rem', width: '2rem' }} />
+          <Basket.default style={{ height: '2rem', width: '2rem' }} />
         </AddToCartButton>
         <Spacer size="double" />
         <Paragraph>

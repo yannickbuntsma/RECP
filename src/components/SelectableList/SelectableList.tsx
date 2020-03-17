@@ -4,7 +4,6 @@ import * as React from 'react'
 //   useSelectableList,
 // } from '../../hooks/useSelectableList'
 // import SelectableListItem from '../../elements/SelectableListItem'
-// import { IoMdClose } from 'react-icons/io'
 //
 // export interface Item extends SelectableListItemType {
 //   [key: string]: any

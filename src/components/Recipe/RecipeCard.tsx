@@ -50,12 +50,6 @@ const StyledRecipeCard = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  &:hover .image {
-    transform: scale(1.02);
-    &::after {
-      opacity: 0.8;
-    }
-  }
   .image {
     transition: transform 250ms ease-in-out;
     position: absolute;
