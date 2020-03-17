@@ -2,7 +2,6 @@ import * as React from 'react'
 import { FloatingMenu } from '../src/components'
 import { MdHome, MdPersonPin, MdShoppingCart } from 'react-icons/md'
 import styled from '@emotion/styled'
-import { MENU_HEIGHT } from '../src/styling/constants'
 
 export type Props = {}
 
@@ -44,5 +43,5 @@ const Main = styled.main`
 `
 
 const Section = styled.section`
-  margin-bottom: ${MENU_HEIGHT}px;
+  margin-bottom: 64px; // TODO: Fix magic number
 `
