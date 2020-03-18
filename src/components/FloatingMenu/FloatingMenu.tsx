@@ -52,7 +52,7 @@ const MenuItem = styled.li`
 
 const MenuItemContent = styled.a`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: ${MENU_HEIGHT}px;
   text-decoration: none;
@@ -64,4 +64,5 @@ const Icon = styled.span``
 
 const Text = styled.span`
   display: block;
+  margin-left: 0.5rem;
 `
