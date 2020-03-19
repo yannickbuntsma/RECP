@@ -12,7 +12,7 @@ export interface SelectableListItem<T> extends ListItem<T> {
 
 export const useSelectableList = <T>(
   items: Array<ListItem<T>> = [],
-  initialState: Array<SelectableListItem<T>> = []
+  initialState: Array<SelectableListItem<T>> = [],
 ): [
   Array<SelectableListItem<T>>,
   React.Dispatch<React.SetStateAction<Array<SelectableListItem<T>>>>,
@@ -23,14 +23,14 @@ export const useSelectableList = <T>(
     removeItem: (item: SelectableListItem<T>) => void
     clearItems: () => void
     getSelectedOriginalItems: T[]
-  }
+  },
 ] => {
   const initial: Array<SelectableListItem<T>> = items.map(
     (i, index) =>
       initialState[index] || {
         ...i,
         isSelected: i.hasOwnProperty('isSelected') || false,
-      }
+      },
   )
 
   const [list, setList] = React.useState(initial)

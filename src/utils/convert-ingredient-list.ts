@@ -20,7 +20,7 @@ export const arrayToObject = (array: Ingredient[]): ShoppingListIngredient =>
   }, {})
 
 export const objectToArray = (
-  object: ShoppingListIngredient
+  object: ShoppingListIngredient,
 ): Array<Ingredient & { isSelected?: boolean }> =>
   Object.entries(object).map(([name, { isSelected, ...rest }]) => ({
     ...rest,

@@ -2,29 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
-
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
 import {
   GetShoppingList,
   getShoppingList,
 } from '../../state/shopping-list/selectors'
-import {
-  removeFromShoppingList,
-  toggleShoppingListItem,
-} from '../../state/shopping-list/actions'
+import * as Actions from '../../state/shopping-list/actions'
 import SelectableListItem from '../../elements/SelectableListItem'
 import { getUnitLabel } from '../../i18n/get-unit-label'
 import { Button } from '../../elements'
+
+const Basket = require('../../icons/shopping-basket_outline.svg')
 
 export interface StateProps {
   shoppingList: GetShoppingList
 }
 
 export interface DispatchProps {
-  toggleShoppingListItem: typeof toggleShoppingListItem
-  removeFromShoppingList: typeof removeFromShoppingList
+  toggleShoppingListItem: typeof Actions.toggleShoppingListItem
+  removeFromShoppingList: typeof Actions.removeFromShoppingList
 }
 
 export interface Props extends StateProps, DispatchProps {}
@@ -76,8 +73,8 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 const mapDispatchToProps: DispatchProps = {
-  toggleShoppingListItem,
-  removeFromShoppingList,
+  toggleShoppingListItem: Actions.toggleShoppingListItem,
+  removeFromShoppingList: Actions.removeFromShoppingList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)

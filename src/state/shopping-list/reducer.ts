@@ -5,8 +5,11 @@ import {
   setShoppingList,
   toggleShoppingListItem,
 } from './actions'
-import { arrayToObject, objectToArray } from '../../utils'
-import { mergeIngredientObjects } from '../../utils'
+import {
+  arrayToObject,
+  mergeIngredientObjects,
+  objectToArray,
+} from '../../utils'
 import { ShoppingListIngredient } from '../types'
 
 export type ShoppingListState = {
@@ -26,7 +29,7 @@ export const shoppingListReducer = reducer(
     ...state,
     items: mergeIngredientObjects(
       state.items,
-      arrayToObject(payload.ingredients)
+      arrayToObject(payload.ingredients),
     ),
   })),
 
@@ -34,7 +37,7 @@ export const shoppingListReducer = reducer(
     const { name } = payload
 
     const filteredList = objectToArray(state.items).filter(
-      (ingredient) => ingredient.name !== name
+      (ingredient) => ingredient.name !== name,
     )
 
     return {
@@ -62,5 +65,5 @@ export const shoppingListReducer = reducer(
   on(setShoppingList, (state, { payload }) => ({
     ...state,
     items: arrayToObject(payload.ingredients),
-  }))
+  })),
 )

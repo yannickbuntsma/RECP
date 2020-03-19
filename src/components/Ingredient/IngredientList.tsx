@@ -1,11 +1,11 @@
 import React from 'react'
+import styled from '@emotion/styled'
 import { Ingredient as IngredientType } from '../../types'
 
 import List from '../../elements/List'
 import Ingredient from './Ingredient'
 import Checkbox from '../../elements/Checkbox'
 import { useTheme } from '../../theme/theme'
-import styled from '@emotion/styled'
 import Spacer from '../Spacing/Spacer'
 
 export type Props = {
@@ -32,10 +32,13 @@ export const IngredientList: React.FC<Props> = ({
       : [...selectedIngredients, id]
 
     const newIngredients = ingredients.filter((item) =>
-      selected.includes(item.id)
+      selected.includes(item.id),
     )
 
-    onChange && onChange(newIngredients)
+    if (onChange) {
+      onChange(newIngredients)
+    }
+
     return newIngredients.map((item) => item.id)
   }
 

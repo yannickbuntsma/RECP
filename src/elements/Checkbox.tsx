@@ -2,7 +2,6 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { withTheme } from 'emotion-theming'
 import { ThemeProps } from '../theme/theme'
-import { lightenDarkenColor } from '../utils'
 
 export interface Props extends ThemeProps {
   checked: boolean
@@ -19,7 +18,7 @@ export interface PropsWithType extends Props {
 const HiddenCheckbox: React.FC<PropsWithType> = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -33,10 +32,10 @@ const getSizePixels = (size: Props['size']) => {
   switch (size) {
     case 'S':
       return '16px'
-    case 'M':
-      return '24px'
     case 'L':
       return '32px'
+    default:
+      return '24px'
   }
 }
 

@@ -8,7 +8,12 @@ export type Props = {
   backgroundSize?: 'cover' | 'contain'
 }
 
-export const Image: React.FC<Props> = ({ src, alt, height, backgroundSize = 'cover' }) => (
+export const Image: React.FC<Props> = ({
+  src,
+  alt,
+  height,
+  backgroundSize = 'cover',
+}) => (
   <div
     aria-hidden
     className="image"

@@ -55,11 +55,3 @@ const Content = styled.div`
 `
 
 export default SelectableListItem
-//button {
-//  cursor: pointer;
-//}
-//
-//.icon {
-//  width: 32px;
-//  height: 32px;
-//}

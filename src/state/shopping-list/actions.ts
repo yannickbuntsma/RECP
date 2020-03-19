@@ -8,26 +8,26 @@ export const addToShoppingList = action(
   'shopping-list/add',
   payload<{
     ingredients: Ingredient[]
-  }>()
+  }>(),
 )
 
 export const removeFromShoppingList = action(
   'shopping-list/remove',
   payload<{
     name: Name
-  }>()
+  }>(),
 )
 
 export const toggleShoppingListItem = action(
   'shopping-list/toggle-item',
   payload<{
     name: Name
-  }>()
+  }>(),
 )
 
 export const setShoppingList = action(
   'shopping-list/set',
   payload<{
     ingredients: Ingredient[]
-  }>()
+  }>(),
 )

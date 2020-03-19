@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
-
+import styled from '@emotion/styled'
 import { Ingredient, Recipe } from '../../types'
 
 import Hero from '../../elements/Hero'
 import { IngredientList } from '../Ingredient/IngredientList'
-import { addToShoppingList } from '../../state/shopping-list/actions'
+import * as Actions from '../../state/shopping-list/actions'
 import { Button } from '../Button/Button'
 import { Heading, Paragraph } from '../Typography'
 import Spacer from '../Spacing/Spacer'
-import styled from '@emotion/styled'
+
+const Basket = require('../../icons/shopping-basket_outline.svg')
 
 export interface DispatchProps {
-  addToShoppingList: typeof addToShoppingList
+  addToShoppingList: typeof Actions.addToShoppingList
 }
 
 export interface Props extends DispatchProps {
@@ -24,31 +24,22 @@ export interface Props extends DispatchProps {
 
 const RecipeDetail: React.FC<Props> = ({
   addToShoppingList,
-  recipe: {
-    id,
-    title,
-    instructions,
-    image,
-    ingredientList,
-    preparationTime,
-    cookingTime,
-    tags,
-  },
+  recipe: { title, instructions, image, ingredientList },
 }) => {
   const [selected, setSelected] = useState<Array<Ingredient['id']>>(
-    ingredientList.map((item) => item.id)
+    ingredientList.map((item) => item.id),
   )
   const handleIngredientSelection = (ingredients: Ingredient[]) => {
     console.log(
       'handling',
-      ingredients.map((item) => item.id)
+      ingredients.map((item) => item.id),
     )
     setSelected(ingredients.map((item) => item.id))
   }
 
   const handleAdd = (
     ingredients: Ingredient[],
-    selection: Array<Ingredient['id']>
+    selection: Array<Ingredient['id']>,
   ) => {
     const list = ingredients.filter((item) => selection.includes(item.id))
     addToShoppingList({ ingredients: list })
@@ -99,7 +90,7 @@ const Wrapper = styled.div`
 `
 
 const mapDispatchToProps: DispatchProps = {
-  addToShoppingList,
+  addToShoppingList: Actions.addToShoppingList,
 }
 
 export default connect(null, mapDispatchToProps)(RecipeDetail)

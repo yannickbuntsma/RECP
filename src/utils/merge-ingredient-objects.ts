@@ -4,7 +4,7 @@ import { convertUnit } from './convert-unit'
 
 export const mergeIngredientObjects = (
   existingObj: ShoppingListIngredient,
-  additionObj: ShoppingListIngredient
+  additionObj: ShoppingListIngredient,
 ): ShoppingListIngredient =>
   Object.keys({ ...existingObj, ...additionObj }).reduce((acc, name) => {
     const existing: Omit<Ingredient, 'name'> = existingObj[name]
@@ -34,22 +34,22 @@ export const mergeIngredientObjects = (
           amount: Number(existing.amount) + Number(addition.amount),
         },
       }
-    } else {
-      // addition ingredient needs to be converted
-      const { amount: convertedAdditionAmount, unit } = convertUnit(
-        addition.amount,
-        addition.unit,
-        existing.unit
-      )
-      const newAmount = existing.amount + convertedAdditionAmount
+    }
 
-      return {
-        ...acc,
-        [name]: {
-          ...existingObj[name],
-          amount: newAmount,
-          unit,
-        },
-      }
+    // addition ingredient needs to be converted
+    const { amount: convertedAdditionAmount, unit } = convertUnit(
+      addition.amount,
+      addition.unit,
+      existing.unit,
+    )
+    const newAmount = existing.amount + convertedAdditionAmount
+
+    return {
+      ...acc,
+      [name]: {
+        ...existingObj[name],
+        amount: newAmount,
+        unit,
+      },
     }
   }, {})
