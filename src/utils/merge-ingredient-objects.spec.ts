@@ -1,6 +1,5 @@
 import { ShoppingListIngredient } from '../state/types'
 import { mergeIngredientObjects } from './merge-ingredient-objects'
-import { logger } from './test-logger'
 
 const simpleExisting: ShoppingListIngredient = {
   paprika: {

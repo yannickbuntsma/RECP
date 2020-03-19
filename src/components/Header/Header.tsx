@@ -4,8 +4,6 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 import { withTheme } from 'emotion-theming'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
-
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
 import {
@@ -13,6 +11,8 @@ import {
   getShoppingList,
 } from '../../state/shopping-list/selectors'
 import { ThemeProps } from '../../theme/theme'
+
+const Basket = require('../../icons/shopping-basket_outline.svg')
 
 export interface StateProps {
   shoppingList: GetShoppingList
@@ -32,7 +32,7 @@ export const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
       {items.map((item) => (
         <li key={item.label}>
           <Link href={item.href}>
-            <a>{item.label}</a>
+            <a href={item.href}>{item.label}</a>
           </Link>
         </li>
       ))}
@@ -53,7 +53,7 @@ const mapStateToProps = (state: AppState) => ({
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(
   withTheme(styled(Header)`
     width: 100%;
@@ -66,7 +66,7 @@ export default connect(
       display: flex;
       padding: 0 1rem;
     }
-    
+
     .bottom-bar {
       height: 4px;
       width: 100%;
@@ -99,5 +99,5 @@ export default connect(
         color: ${({ theme }) => theme.colors.primary};
       }
     }
-  `)
+  `),
 )

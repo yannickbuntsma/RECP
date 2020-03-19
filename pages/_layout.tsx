@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { FloatingMenu } from '../src/components'
 import styled from '@emotion/styled'
+import { FloatingMenu } from '../src/components'
 
 const Basket = require('../src/icons/shopping-basket_outline.svg')
 const Cutlery = require('../src/icons/utensils_outline.svg')

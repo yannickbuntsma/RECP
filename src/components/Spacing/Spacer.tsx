@@ -13,15 +13,15 @@ const getSpacing = (size: Props['size']) => {
       return unit * 0.25
     case 'half':
       return unit * 0.5
-    case 'single':
-      return unit
     case 'double':
       return unit * 2
+    default:
+      return unit
   }
 }
 
 const Spacer: React.FC<Props> = styled.div`
-  margin-bottom: ${({ size }) => getSpacing(size) + 'px'};
+  margin-bottom: ${({ size }) => `${getSpacing(size)} px`};
 `
 
 export default Spacer

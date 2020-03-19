@@ -47,10 +47,3 @@ export interface Recipe<TIngredientAmount = number> {
 }
 
 export interface ServerRecipe extends Recipe<string> {}
-
-const ingr = [
-  { id: '1', name: 'paprika', amount: 2, unit: 'pieces' },
-  { id: '2', name: 'tomaat', amount: 2, unit: 'pieces' },
-  { id: '3', name: 'water', amount: 2, unit: 'l' },
-  { id: '4', name: 'zout', amount: 3, unit: 'pinch' },
-]

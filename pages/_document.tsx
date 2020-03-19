@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Document, { Main, NextScript } from 'next/document'
 import { Global } from '@emotion/core'
-import { theme } from '../src/theme/theme'
 
 class AppDocument extends Document {
   static async getInitialProps(ctx: any) {
@@ -11,7 +10,7 @@ class AppDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta

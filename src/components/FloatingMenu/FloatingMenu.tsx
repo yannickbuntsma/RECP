@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { useTheme } from '../../theme/theme'
 import { zIndexLevel } from '../../styling/utils/z-index-level'
 import { MENU_HEIGHT } from '../../styling/constants'
 
@@ -16,8 +15,6 @@ export type Props = {
 }
 
 const Floatingmenu: React.FC<Props> = ({ items }) => {
-  const theme = useTheme()
-
   return (
     <Menu>
       {items.map((item) => (

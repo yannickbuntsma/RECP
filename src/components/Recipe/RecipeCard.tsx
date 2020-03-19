@@ -15,7 +15,7 @@ export interface Props extends ThemeProps {
 }
 
 const RecipeCard: React.FC<Props> = ({
-  recipe: { title, image, preparationTime, cookingTime, tags },
+  recipe: { title, image, preparationTime, cookingTime },
 }) => (
   <Card>
     <StyledRecipeCard>

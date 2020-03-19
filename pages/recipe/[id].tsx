@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { AppContext } from 'next/app'
 
 import { Recipe } from '../../src/types'
 import getRecipe from '../../src/cms/get-recipe'
@@ -11,12 +10,12 @@ export type Props = {
   recipe: Recipe
 }
 
-export default class extends React.Component<Props> {
-  static async getInitialProps({ query: { id } }: any) {
+export default class RecipePage extends React.Component<Props> {
+  static async getInitialProps({ query: { id: queryId } }: any) {
     let recipe
 
-    if (typeof id === 'string') {
-      recipe = await getRecipe(id)
+    if (typeof queryId === 'string') {
+      recipe = await getRecipe(queryId)
         .then((res) => {
           const { sys, fields } = res
           const { id } = sys

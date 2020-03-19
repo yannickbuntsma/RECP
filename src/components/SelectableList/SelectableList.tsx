@@ -16,7 +16,7 @@ import * as React from 'react'
 // }
 //
 // // @ts-ignore
-const SelectableList: React.FC = () => (<p>SelectableList</p>)
+const SelectableList: React.FC = () => <p>SelectableList</p>
 // const SelectableList: React.FC<Props> = ({ items, initialSelected = [], onChange }) => {
 //   const [stateItems, setStateItems] = React.useState(items)
 //   // const [

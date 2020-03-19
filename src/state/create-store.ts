@@ -21,7 +21,7 @@ export const createStore = (initialState = {}): StoreWithPersistor => {
   const store: StoreWithPersistor = reduxCreateStore(
     persistedReducer,
     initialState,
-    devToolsEnhancer({ name: 'RECP' })
+    devToolsEnhancer({ name: 'RECP' }),
   )
 
   // Add the redux persistor to the store

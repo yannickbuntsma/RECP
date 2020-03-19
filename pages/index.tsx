@@ -14,7 +14,8 @@ const Home: React.FC<Props> = () => {
     client
       .getEntries()
       .then((entries: any) => {
-        const recipes = entries.items.map((entry: any) => {
+        // eslint-disable-next-line array-callback-return,consistent-return
+        const recipes = entries.items.reduce((entry: any) => {
           if (entry.fields) {
             return {
               ...entry.fields,
@@ -31,11 +32,6 @@ const Home: React.FC<Props> = () => {
   useEffect(() => {
     getFields()
   }, [])
-
-  const logData = () => {
-    console.log('Logging 🖍')
-    client.getEntries().then((res) => console.log(res))
-  }
 
   return <Layout>{data && <RecipeList recipes={data} />}</Layout>
 }
