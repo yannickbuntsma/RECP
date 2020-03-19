@@ -15,7 +15,7 @@ const Home: React.FC<Props> = () => {
       .getEntries()
       .then((entries: any) => {
         // eslint-disable-next-line array-callback-return,consistent-return
-        const recipes = entries.items.reduce((entry: any) => {
+        const recipes = entries.items.map((entry: any) => {
           if (entry.fields) {
             return {
               ...entry.fields,
