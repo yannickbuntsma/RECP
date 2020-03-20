@@ -12,19 +12,19 @@ export type Props = {
   recipes: Recipe[]
 } & DefaultPropTypes
 
-// <Link key={recipe.id} href="/recipe/[id]" as={`recipe/${recipe.id}`}>
-
-const RecipeList: React.FC<Props> = ({ recipes }) => (
-  <StyledRecipeList>
-    {recipes.map((recipe) => (
-      <Link key={recipe.id} href={`recipe/${recipe.id}`}>
-        <StyledRecipeListCard key={recipe.title}>
-          <RecipeCard recipe={recipe} />
-        </StyledRecipeListCard>
-      </Link>
-    ))}
-  </StyledRecipeList>
-)
+const RecipeList: React.FC<Props> = ({ recipes }) => {
+  return (
+    <StyledRecipeList>
+      {recipes.map((recipe) => (
+        <Link key={recipe.id} href={`recipe/${recipe.id}`}>
+          <StyledRecipeListCard key={recipe.title}>
+            <RecipeCard recipe={recipe} />
+          </StyledRecipeListCard>
+        </Link>
+      ))}
+    </StyledRecipeList>
+  )
+}
 
 const StyledRecipeListCard = styled.li`
   list-style: none;
