@@ -21,7 +21,7 @@ const getSpacing = (size: Props['size']) => {
 }
 
 const Spacer: React.FC<Props> = styled.div`
-  margin-bottom: ${({ size }) => `${getSpacing(size)} px`};
+  margin-bottom: ${({ size }) => `${getSpacing(size)}px`};
 `
 
 export default Spacer

@@ -123,7 +123,7 @@ class AppDocument extends Document {
              box-sizing: inherit;
              margin: 0;
              padding: 0;
-             font-family: sans-serif;
+             font-family: 'Lato', sans-serif;
           }`}
         />
         <body>

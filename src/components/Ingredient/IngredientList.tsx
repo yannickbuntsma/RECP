@@ -45,9 +45,9 @@ export const IngredientList: React.FC<Props> = ({
   return (
     <List>
       {ingredients.map((ingredient: IngredientType, index) => (
-        <>
+        <React.Fragment key={ingredient.id}>
           {index !== 0 && <Spacer size="half" />}
-          <Item key={ingredient.id} style={{ color: theme.colors.text }}>
+          <Item style={{ color: theme.colors.text }}>
             <LABEL>
               <Checkbox
                 size="L"
@@ -57,7 +57,7 @@ export const IngredientList: React.FC<Props> = ({
               <Ingredient ingredient={ingredient} />
             </LABEL>
           </Item>
-        </>
+        </React.Fragment>
       ))}
     </List>
   )
