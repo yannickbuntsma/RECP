@@ -40,10 +40,23 @@ export interface Recipe<TIngredientAmount = number> {
   title: string
   instructions: string
   image: any
-  ingredientList: Ingredient<TIngredientAmount>[]
+  ingredientList?: Ingredient<TIngredientAmount>[]
   preparationTime: 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60
   cookingTime: 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60
   tags: Tag[]
 }
 
 export interface ServerRecipe extends Recipe<string> {}
+
+export interface ShoppingListIngredient {
+  [key: string]: {
+    id: Ingredient['id']
+    amount: Ingredient['amount']
+    unit: Ingredient['unit']
+    isSelected?: boolean
+  }
+}
+
+export type ShoppingList = {
+  [key: string]: ShoppingListIngredient[0]
+}

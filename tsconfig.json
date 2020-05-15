@@ -10,14 +10,9 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
+      "*": ["node_modules/*", "src/types/*"]
     },
-    "lib": [
-      "es2015"
-    ],
+    "lib": ["es2015", "dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -26,12 +21,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "pages/**/*",
-    "server/**/*",
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["pages/**/*", "src/**/*"],
+  "exclude": ["node_modules"]
 }

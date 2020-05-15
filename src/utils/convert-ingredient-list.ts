@@ -1,5 +1,4 @@
-import { Ingredient, Recipe, ServerRecipe } from '../types'
-import { ShoppingListIngredient } from '../state/types'
+import { Ingredient, Recipe, ServerRecipe, ShoppingListIngredient } from '../types'
 
 export const convertAmountToNumber = (recipe: ServerRecipe): Recipe => ({
   ...recipe,

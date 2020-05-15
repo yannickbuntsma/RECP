@@ -1,5 +1,5 @@
-import { ShoppingListIngredient } from '../state/types'
 import { mergeIngredientObjects } from './merge-ingredient-objects'
+import { ShoppingListIngredient } from '../types'
 
 const simpleExisting: ShoppingListIngredient = {
   paprika: {
