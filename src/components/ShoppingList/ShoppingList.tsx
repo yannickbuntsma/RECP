@@ -1,38 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 
 import { objectToArray } from '../../utils'
-import { AppState } from '../../state/reducer'
-import {
-  GetShoppingList,
-  getShoppingList,
-} from '../../state/shopping-list/selectors'
-import * as Actions from '../../state/shopping-list/actions'
 import SelectableListItem from '../../elements/SelectableListItem'
 import { getUnitLabel } from '../../i18n/get-unit-label'
 import { Button } from '../../elements'
+import { useShoppingList } from '../../hooks/use-shopping-list'
 
 const Basket = require('../../icons/shopping-basket_outline.svg')
 
-export interface StateProps {
-  shoppingList: GetShoppingList
-}
-
-export interface DispatchProps {
-  toggleShoppingListItem: typeof Actions.toggleShoppingListItem
-  removeFromShoppingList: typeof Actions.removeFromShoppingList
-}
-
-export interface Props extends StateProps, DispatchProps {}
+export interface Props {}
 
 // @ts-ignore
-const ShoppingList: React.FC<Props> = ({
-  shoppingList,
-  toggleShoppingListItem,
-  removeFromShoppingList,
-}) => {
-  const items = objectToArray(shoppingList.items).map((item) => {
+const ShoppingList: React.FC<Props> = () => {
+  const { shoppingList, toggleItem, removeItem } = useShoppingList()
+
+  const items = objectToArray(shoppingList).map((item) => {
     const { amount, unit, name } = item
     const unitLabel = getUnitLabel(unit, amount)
 
@@ -44,22 +27,24 @@ const ShoppingList: React.FC<Props> = ({
   })
 
   if (items.length < 1) {
-    return <h3>You currently have no items in your shopping list</h3>
+    return (
+      <div style={{ padding: '2rem' }}>
+        <h3>You currently have no items in your shopping list</h3>
+      </div>
+    )
   }
 
   return items.map((item) => {
-    const { name } = item
-
     return (
       <SelectableListItem
         key={item.label}
         value={item}
         isSelected={item.isSelected}
-        onChange={() => toggleShoppingListItem({ name })}
+        onChange={() => toggleItem(item)}
       >
         <Content>
           <Name>{item.label}</Name>
-          <DeleteButton onClick={() => removeFromShoppingList({ name })}>
+          <DeleteButton onClick={() => removeItem(item)}>
             <Basket.default className="icon" size={24} />
           </DeleteButton>
         </Content>
@@ -68,16 +53,7 @@ const ShoppingList: React.FC<Props> = ({
   })
 }
 
-const mapStateToProps = (state: AppState) => ({
-  shoppingList: getShoppingList(state),
-})
-
-const mapDispatchToProps: DispatchProps = {
-  toggleShoppingListItem: Actions.toggleShoppingListItem,
-  removeFromShoppingList: Actions.removeFromShoppingList,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
+export default ShoppingList
 
 const DeleteButton = styled(Button)({
   'margin-left': 'auto',

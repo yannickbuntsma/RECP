@@ -1,32 +1,26 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 
 import styled from '@emotion/styled'
 import { Ingredient, Recipe } from '../../types'
 
 import Hero from '../../elements/Hero'
 import { IngredientList } from '../Ingredient/IngredientList'
-import * as Actions from '../../state/shopping-list/actions'
 import { Button } from '../Button/Button'
-import { Heading, Paragraph } from '../Typography'
+import { Heading } from '../Typography'
 import Spacer from '../Spacing/Spacer'
 import { addLineIngredientData } from '../../utils/add-inline-ingredient-data'
 import Instructions from '../Instructions/Instructions'
+import { useShoppingList } from '../../hooks/use-shopping-list'
 
 const Basket = require('../../icons/shopping-basket_outline.svg')
 
-export interface DispatchProps {
-  addToShoppingList: typeof Actions.addToShoppingList
-}
-
-export interface Props extends DispatchProps {
+export interface Props {
   recipe: Recipe
 }
 
-const RecipeDetail: React.FC<Props> = ({
-  addToShoppingList,
-  recipe: { title, instructions, image, ingredientList },
-}) => {
+const RecipeDetail: React.FC<Props> = ({ recipe }) => {
+  const { title, instructions, image, ingredientList = [] } = recipe
+  const { addItems } = useShoppingList()
   const [selected, setSelected] = useState<Array<Ingredient['id']>>(
     ingredientList.map((item) => item.id),
   )
@@ -43,7 +37,7 @@ const RecipeDetail: React.FC<Props> = ({
     selection: Array<Ingredient['id']>,
   ) => {
     const list = ingredients.filter((item) => selection.includes(item.id))
-    addToShoppingList({ ingredients: list })
+    addItems(list)
   }
 
   const enhancedInstructions = addLineIngredientData(
@@ -95,8 +89,4 @@ const Wrapper = styled.div`
   padding-bottom: 150px;
 `
 
-const mapDispatchToProps: DispatchProps = {
-  addToShoppingList: Actions.addToShoppingList,
-}
-
-export default connect(null, mapDispatchToProps)(RecipeDetail)
+export default RecipeDetail

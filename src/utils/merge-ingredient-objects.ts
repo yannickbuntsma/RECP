@@ -1,5 +1,4 @@
-import { ShoppingListIngredient } from '../state/types'
-import { Ingredient } from '../types'
+import { Ingredient, ShoppingListIngredient } from '../types'
 import { convertUnit } from './convert-unit'
 
 export const mergeIngredientObjects = (

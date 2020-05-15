@@ -17,6 +17,7 @@ const Wrapper = styled.span`
   margin: 0 -0.15rem;
   background: ${({ theme }) => theme.colors.primary};
   border-radius: 2rem;
+  white-space: nowrap;
 `
 
 export default withTheme(HighlightedIngredient)
