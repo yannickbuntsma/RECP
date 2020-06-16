@@ -12,11 +12,12 @@ export type Unit =
   | 'g'
   | 'kg'
   | 'pieces'
-  | 'pinch'
-  | 'cm'
+  | 'pinches'
+  | 'hands'
+  | 'cloves'
   | 'bag'
-  | 'hand'
-  | 'clove'
+  | 'cm'
+  | 'to taste'
 
 type Tag = string
 
