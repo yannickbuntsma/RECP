@@ -27,7 +27,7 @@
     "isolatedModules": true
   },
   "include": [
-    "pages/**/*",
+	  "src/**/*",
     "server/**/*",
     "src/**/*"
   ],

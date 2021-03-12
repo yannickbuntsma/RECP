@@ -1,9 +1,8 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { withTheme } from 'emotion-theming'
+
 import { ThemeProps } from '../theme/theme'
 
-export interface Props extends ThemeProps {
+export interface Props  {
   checked: boolean
   disabled?: boolean
   onChange?: () => void
@@ -15,18 +14,18 @@ export interface PropsWithType extends Props {
 
 // TODO: Fix the typing here
 // @ts-ignore
-const HiddenCheckbox: React.FC<PropsWithType> = styled.input`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-`
+// const HiddenCheckbox: React.FC<PropsWithType> = styled.input`
+//   border: 0;
+//   clip: rect(0 0 0 0);
+//   clip-path: inset(50%);
+//   height: 1px;
+//   margin: -1px;
+//   overflow: hidden;
+//   padding: 0;
+//   position: absolute;
+//   white-space: nowrap;
+//   width: 1px;
+// `
 
 const getSizePixels = (size: Props['size']) => {
   switch (size) {
@@ -39,18 +38,18 @@ const getSizePixels = (size: Props['size']) => {
   }
 }
 
-const StyledCheckbox: React.FC<Props> = styled.div`
-  display: inline-block;
-  margin-right: 1rem;
-  width: ${({ size }) => getSizePixels(size)};
-  height: ${({ size }) => getSizePixels(size)};
-  border-radius: 3px;
-  transition: all 150ms; // fix the 'all' when I know what to transition
-  box-shadow: 0 0 0 0 pink;
-  opacity: ${({ checked }: Props) => (checked ? 1 : 0.5)};
-  background: ${({ theme, checked }: Props) =>
-    checked ? theme.colors.primary : theme.colors.primary};
-`
+// const StyledCheckbox: React.FC<Props> = styled.div`
+//   display: inline-block;
+//   margin-right: 1rem;
+//   width: ${({ size }) => getSizePixels(size)};
+//   height: ${({ size }) => getSizePixels(size)};
+//   border-radius: 3px;
+//   transition: all 150ms; // fix the 'all' when I know what to transition
+//   box-shadow: 0 0 0 0 pink;
+//   opacity: ${({ checked }: Props) => (checked ? 1 : 0.5)};
+//   background: ${({ theme, checked }: Props) =>
+//     checked ? theme.colors.primary : theme.colors.primary};
+// `
 // // @ts-ignore // TODO: Fix tslint error
 // ${HiddenCheckbox}:focus + & {
 //   box-shadow: 0 0 0 4px
@@ -64,23 +63,24 @@ const StyledCheckbox: React.FC<Props> = styled.div`
 //   background: ${(props: Props) => (props.disabled ? 'salmon' : 'papayawhip')};
 // }
 
-const Icon = styled.svg`
-  fill: none;
-  stroke: white;
-  stroke-width: 2px;
-  transition: opacity 250ms ease-in-out;
-  opacity: ${({ checked }: Props) => (checked ? 1 : 0)};
-`
+// const Icon = styled.svg`
+//   fill: none;
+//   stroke: white;
+//   stroke-width: 2px;
+//   transition: opacity 250ms ease-in-out;
+//   opacity: ${({ checked }: Props) => (checked ? 1 : 0)};
+// `
 
 const Checkbox: React.FC<Props> = ({ checked, ...props }) => (
   <>
-    <HiddenCheckbox type="checkbox" checked={checked} {...props} />
-    <StyledCheckbox checked={checked} {...props}>
-      <Icon viewBox="0 0 24 24" checked={checked} {...props}>
+  <h3>Checkbox</h3>
+    {/* <input type="checkbox" checked={checked} {...props} />
+    <input checked={checked} {...props}>
+      <svg viewBox="0 0 24 24"  {...props}>
         <polyline points="20 6 9 17 4 12" />
-      </Icon>
-    </StyledCheckbox>
+      </svg>
+    </input> */}
   </>
 )
 
-export default withTheme(Checkbox)
+export default Checkbox

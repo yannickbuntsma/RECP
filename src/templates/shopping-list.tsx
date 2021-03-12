@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { ShoppingList } from '../src/components/ShoppingList'
+import { ShoppingList } from '../components/ShoppingList'
 import Layout from './_layout'
-import Protected from '../src/components/Protected/Protected'
+import Protected from '../components/Protected/Protected'
 
 export type Props = {}
 

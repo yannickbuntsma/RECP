@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import styled from '@emotion/styled'
 import { Ingredient, Recipe } from '../../types'
 
 import Hero from '../../elements/Hero'
@@ -13,7 +12,7 @@ import Spacer from '../Spacing/Spacer'
 import { addLineIngredientData } from '../../utils/add-inline-ingredient-data'
 import Instructions from '../Instructions/Instructions'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
+const Basket = require('../../images/icons/shopping-basket_outline.svg')
 
 export interface DispatchProps {
   addToShoppingList: typeof Actions.addToShoppingList
@@ -57,8 +56,8 @@ const RecipeDetail: React.FC<Props> = ({
     <>
       <Hero src={image.fields.file.url} alt={title} height={300} />
       <Spacer size="single" />
-      <Wrapper>
-        <Title>{title}</Title>
+      <div>
+        <Heading.H1>{title}</Heading.H1>
         <Spacer size="single" />
         <IngredientList
           ingredients={ingredientList}
@@ -66,34 +65,32 @@ const RecipeDetail: React.FC<Props> = ({
           onChange={handleIngredientSelection}
         />
         <Spacer size="double" />
-        <AddToCartButton onClick={() => handleAdd(ingredientList, selected)}>
-          <Text>Voeg selectie toe</Text>
-          <Basket.default style={{ height: '2rem', width: '2rem' }} />
-        </AddToCartButton>
+        <Button onClick={() => handleAdd(ingredientList, selected)}>
+          <span>Voeg selectie toe</span>
+          {/* <Basket.default style={{ height: '2rem', width: '2rem' }} /> */}
+        </Button>
         <Spacer size="double" />
         <Instructions>{enhancedInstructions}</Instructions>
-      </Wrapper>
+      </div>
     </>
   )
 }
 
-const AddToCartButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-`
+// const AddToCartButton = styled(Button)`
+//   display: flex;
+//   align-items: center;
+//   color: white;
+//   font-weight: bold;
+// `
 
-const Title = styled(Heading.H1)`
-  font-family: 'Oregano', cursive;
-`
+// const Title = styled(Heading.H1)`
+//   font-family: 'Oregano', cursive;
+// `
 
-const Text = styled.span``
-
-const Wrapper = styled.div`
-  margin: 0 1rem;
-  padding-bottom: 150px;
-`
+// const Wrapper = styled.div`
+//   margin: 0 1rem;
+//   padding-bottom: 150px;
+// `
 
 const mapDispatchToProps: DispatchProps = {
   addToShoppingList: Actions.addToShoppingList,

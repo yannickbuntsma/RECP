@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 
 export type Props = {
   src: string
@@ -28,4 +28,4 @@ export const Image: React.FC<Props> = ({
   </div>
 )
 
-export default styled(Image)``
+export default Image

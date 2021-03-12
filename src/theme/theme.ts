@@ -1,5 +1,3 @@
-import * as EmotionTheming from 'emotion-theming'
-
 export const lightTheme = {
   colors: {
     text: '#000000',
@@ -30,4 +28,4 @@ export interface ThemeProps {
   theme: Theme
 }
 
-export const useTheme = () => EmotionTheming.useTheme<Theme>()
+export const useTheme = () => theme

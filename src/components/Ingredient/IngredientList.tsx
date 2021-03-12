@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+
 import { Ingredient as IngredientType } from '../../types'
 
 import List from '../../elements/List'
@@ -47,16 +47,16 @@ export const IngredientList: React.FC<Props> = ({
       {ingredients.map((ingredient: IngredientType, index) => (
         <React.Fragment key={ingredient.id}>
           {index !== 0 && <Spacer size="half" />}
-          <Item style={{ color: theme.colors.text }}>
-            <LABEL>
+          <li style={{ color: theme.colors.text }}>
+            <label>
               <Checkbox
                 size="L"
                 checked={isSelected(ingredient.id)}
                 onChange={() => handleChange(ingredient.id)}
               />
               <Ingredient ingredient={ingredient} />
-            </LABEL>
-          </Item>
+            </label>
+          </li>
         </React.Fragment>
       ))}
     </List>
@@ -65,11 +65,11 @@ export const IngredientList: React.FC<Props> = ({
 
 export default IngredientList
 
-const LABEL = styled.label`
-  display: flex;
-  align-items: center;
-`
+// const LABEL = styled.label`
+//   display: flex;
+//   align-items: center;
+// `
 
-const Item = styled.li`
-  list-style: none;
-`
+// const Item = styled.li`
+//   list-style: none;
+// `

@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import styled from '@emotion/styled'
-import Link from 'next/link'
-import { withTheme } from 'emotion-theming'
+// import Link from 'next/link'
 
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
@@ -12,7 +10,7 @@ import {
 } from '../../state/shopping-list/selectors'
 import { ThemeProps } from '../../theme/theme'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
+const Basket = require('../../images/icons/shopping-basket_outline.svg')
 
 export interface StateProps {
   shoppingList: GetShoppingList
@@ -31,9 +29,9 @@ export const Header: React.FC<Props> = ({ className, items, shoppingList }) => (
     <ul>
       {items.map((item) => (
         <li key={item.label}>
-          <Link href={item.href}>
+          {/*<Link href={item.href}>*/}
             <a href={item.href}>{item.label}</a>
-          </Link>
+          {/*</Link>*/}
         </li>
       ))}
       <li className="shopping-list-icon">
@@ -55,49 +53,50 @@ export default connect(
   mapStateToProps,
   null,
 )(
-  withTheme(styled(Header)`
-    width: 100%;
-    display: flex;
-    align-items: center;
+  Header
+  // withTheme(styled(Header)`
+  //   width: 100%;
+  //   display: flex;
+  //   align-items: center;
 
-    ul {
-      list-style: none;
-      width: 100%;
-      display: flex;
-      padding: 0 1rem;
-    }
+  //   ul {
+  //     list-style: none;
+  //     width: 100%;
+  //     display: flex;
+  //     padding: 0 1rem;
+  //   }
 
-    .bottom-bar {
-      height: 4px;
-      width: 100%;
-    }
+  //   .bottom-bar {
+  //     height: 4px;
+  //     width: 100%;
+  //   }
 
-    .shopping-list-icon {
-      cursor: pointer;
-      padding: 0 1rem;
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      position: relative;
-      &__notification {
-        display: block;
-        line-height: 1.5;
-        width: 1.5rem;
-        text-align: center;
-        vertical-align: middle;
-        background-color: red;
-        color: white;
-        border-radius: 50px;
-        position: absolute;
-        top: 12px;
-        right: 6px;
-      }
+  //   .shopping-list-icon {
+  //     cursor: pointer;
+  //     padding: 0 1rem;
+  //     margin-left: auto;
+  //     display: flex;
+  //     align-items: center;
+  //     position: relative;
+  //     &__notification {
+  //       display: block;
+  //       line-height: 1.5;
+  //       width: 1.5rem;
+  //       text-align: center;
+  //       vertical-align: middle;
+  //       background-color: red;
+  //       color: white;
+  //       border-radius: 50px;
+  //       position: absolute;
+  //       top: 12px;
+  //       right: 6px;
+  //     }
 
-      .icon {
-        height: 2rem;
-        width: 2rem;
-        color: ${({ theme }) => theme.colors.primary};
-      }
-    }
-  `),
+  //     .icon {
+  //       height: 2rem;
+  //       width: 2rem;
+  //       color: ${({ theme }) => theme.colors.primary};
+  //     }
+  //   }
+  // `),
 )

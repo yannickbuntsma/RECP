@@ -1,32 +1,34 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
-
 import React from 'react'
-import Markdown, { MarkdownOptions } from 'markdown-to-jsx'
+import Markdown from 'markdown-to-jsx'
 import HighlightedIngredient from './components/HighlightedIngredient'
 
 export interface Props {
   className?: string
 }
 
-const CSS = css`
-  padding: 1rem;
-  line-height: 1.35;
+// const CSS = css`
+//   padding: 1rem;
+//   line-height: 1.35;
 
-  li + li {
-    margin-top: 1rem;
-  }
-`
+//   li + li {
+//     margin-top: 1rem;
+//   }
+// `
 
-const options: MarkdownOptions = {
+const options = {
   overrides: {
     ingr: HighlightedIngredient,
   },
 }
 
 const Instructions: React.FC<Props> = ({ children, className }) => {
+  // TODO: Issue with Markdown package
+  if (typeof children !== 'string') {
+    return
+  }
+
   return (
-    <div css={CSS}>
+    <div >
       <Markdown options={options} className={className}>
         {children}
       </Markdown>

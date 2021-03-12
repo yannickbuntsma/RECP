@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 
 import { Image } from './Image'
 
@@ -17,6 +17,4 @@ const Hero: React.FC<Props> = ({ src, alt, height }) => {
   )
 }
 
-export default styled(Hero)`
-  width: 100%;
-`
+export default Hero

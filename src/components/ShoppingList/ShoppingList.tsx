@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styled from '@emotion/styled'
 
 import { objectToArray } from '../../utils'
 import { AppState } from '../../state/reducer'
@@ -13,7 +12,7 @@ import SelectableListItem from '../../elements/SelectableListItem'
 import { getUnitLabel } from '../../i18n/get-unit-label'
 import { Button } from '../../elements'
 
-const Basket = require('../../icons/shopping-basket_outline.svg')
+const Basket = require('../../images/icons/shopping-basket_outline.svg')
 
 export interface StateProps {
   shoppingList: GetShoppingList
@@ -57,12 +56,12 @@ const ShoppingList: React.FC<Props> = ({
         isSelected={item.isSelected}
         onChange={() => toggleShoppingListItem({ name })}
       >
-        <Content>
-          <Name>{item.label}</Name>
-          <DeleteButton onClick={() => removeFromShoppingList({ name })}>
+        <div>
+          <p>{item.label}</p>
+          <Button onClick={() => removeFromShoppingList({ name })}>
             <Basket.default className="icon" size={24} />
-          </DeleteButton>
-        </Content>
+          </Button>
+        </div>
       </SelectableListItem>
     )
   })
@@ -79,16 +78,16 @@ const mapDispatchToProps: DispatchProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
 
-const DeleteButton = styled(Button)({
-  'margin-left': 'auto',
-})
+// const DeleteButton = styled(Button)({
+//   'margin-left': 'auto',
+// })
 
-const Name = styled.p`
-  margin: 0;
-`
+// const Name = styled.p`
+//   margin: 0;
+// `
 
-const Content = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-`
+// const Content = styled.div`
+//   display: flex;
+//   align-items: center;
+//   width: 100%;
+// `

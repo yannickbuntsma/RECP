@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 
 export type Props = {
   size: 'quarter' | 'half' | 'single' | 'double'
@@ -20,8 +20,10 @@ const getSpacing = (size: Props['size']) => {
   }
 }
 
-const Spacer: React.FC<Props> = styled.div`
-  margin-bottom: ${({ size }) => `${getSpacing(size)}px`};
-`
+const Spacer: React.FC<Props> = ({size}) => <div style={{marginBottom: `${getSpacing(size)}px`}}></div>
+
+// const Spacer: React.FC<Props> = styled.div`
+//   margin-bottom: ${({ size }) => `${getSpacing(size)}px`};
+// `
 
 export default Spacer

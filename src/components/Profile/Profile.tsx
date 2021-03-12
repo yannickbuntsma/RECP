@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useAuth } from 'use-auth0-hooks'
-import styled from '@emotion/styled'
+
 
 import { Button } from '../../elements'
 
@@ -15,9 +15,9 @@ const Profile: React.FC<Props> = () => {
   return auth.isLoading ? (
     <h2>Loading...</h2>
   ) : (
-    <Container>
+    <div>
       {auth.user.hasOwnProperty('picture') && (
-        <Avatar src={auth.user.picture} alt="avatar" width={100} height={100} />
+        <img src={auth.user.picture} alt="avatar" width={100} height={100} />
       )}
 
       {auth.isAuthenticated ? (
@@ -25,20 +25,20 @@ const Profile: React.FC<Props> = () => {
       ) : (
         <Button onClick={auth.login}>Log in</Button>
       )}
-    </Container>
+    </div>
   )
 }
 
 export default Profile
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-`
+// const Container = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 2rem;
+// `
 
-const Avatar = styled.img`
-  border-radius: 200px;
-`
+// const Avatar = styled.img`
+//   border-radius: 200px;
+// `

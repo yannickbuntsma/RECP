@@ -15,3 +15,6 @@ coverage
 
 # don't lint type def files
 *.d.ts
+
+# don't lint Gatsby JS files
+gatsby-*.js

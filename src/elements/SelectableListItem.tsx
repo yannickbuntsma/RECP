@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 
 import Checkbox from './Checkbox'
 
@@ -20,38 +20,38 @@ const SelectableListItem: React.FC<Props> = ({
   onChange,
   className,
 }) => (
-  <LI key={value} className={className}>
-    <Label>
+  <li key={value} className={className}>
+    <label>
       <Checkbox
         size="L"
         checked={isSelected}
         onChange={() => onChange(value)}
       />
-      <Content>{children}</Content>
-    </Label>
-  </LI>
+      <div>{children}</div>
+    </label>
+  </li>
 )
 
-const LI = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+// const LI = styled.li`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 1rem;
 
-  & + & {
-    border-top: 1px solid #eeeeee;
-  }
-`
+//   & + & {
+//     border-top: 1px solid #eeeeee;
+//   }
+// `
 
-const Label = styled.label`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: 100%;
-`
+// const Label = styled.label`
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   width: 100%;
+// `
 
-const Content = styled.div`
-  width: 100%;
-`
+// const Content = styled.div`
+//   width: 100%;
+// `
 
 export default SelectableListItem

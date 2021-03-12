@@ -1,6 +1,6 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import Link from 'next/link'
+
+// import Link from 'next/link'
 
 import { Recipe } from '../../types'
 import { DefaultPropTypes } from '../../default-prop-types'
@@ -15,27 +15,27 @@ export type Props = {
 // <Link key={recipe.id} href="/recipe/[id]" as={`recipe/${recipe.id}`}>
 
 const RecipeList: React.FC<Props> = ({ recipes }) => (
-  <StyledRecipeList>
+  <div>
     {recipes.map((recipe) => (
-      <Link key={recipe.id} href={`recipe/${recipe.id}`}>
-        <StyledRecipeListCard key={recipe.title}>
+      <a key={recipe.slug} href={`recipe/${recipe.slug}`}>
+        <li key={recipe.title}>
           <RecipeCard recipe={recipe} />
-        </StyledRecipeListCard>
-      </Link>
+        </li>
+      </a>
     ))}
-  </StyledRecipeList>
+  </div>
 )
 
-const StyledRecipeListCard = styled.li`
-  list-style: none;
-  margin: 1rem;
-  width: 100%;
-`
+// const StyledRecipeListCard = styled.li`
+//   list-style: none;
+//   margin: 1rem;
+//   width: 100%;
+// `
 
-const StyledRecipeList = styled(List)`
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-`
+// const StyledRecipeList = styled(List)`
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-bottom: 1rem;
+// `
 
 export default RecipeList

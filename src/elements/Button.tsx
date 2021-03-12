@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 import { DefaultPropTypes } from '../default-prop-types'
 
 export type Props = {
@@ -7,21 +7,21 @@ export type Props = {
 } & DefaultPropTypes
 
 export const Button: React.FC<Props> = ({ children, onClick, ...rest }) => (
-  <StyledButton onClick={onClick} {...rest}>
+  <button onClick={onClick} {...rest}>
     {children}
-  </StyledButton>
+  </button>
 )
 
 export default Button
 
-const StyledButton = styled.button`
-  margin: 0;
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-  cursor: pointer;
-`
+// const StyledButton = styled.button`
+//   margin: 0;
+//   background: none;
+//   border: 0;
+//   color: inherit;
+//   font: inherit;
+//   line-height: normal;
+//   overflow: visible;
+//   padding: 0;
+//   cursor: pointer;
+// `

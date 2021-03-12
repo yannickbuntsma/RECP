@@ -36,7 +36,7 @@ export interface SelectableIngredient<TAmount = number>
     SelectableItem {}
 
 export interface Recipe<TIngredientAmount = number> {
-  id: string
+  slug: string
   title: string
   instructions: string
   image: any

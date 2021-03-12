@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+
 import { Button as ElementButton } from '../../elements'
 import { DefaultPropTypes } from '../../default-prop-types'
 import { BORDER_RADIUS } from '../../styling/constants'
@@ -9,13 +9,13 @@ export type Props = {
 } & DefaultPropTypes
 
 export const Button: React.FC<Props> = ({ children, ...rest }) => (
-  <StyledButton {...rest}>{children}</StyledButton>
+  <button {...rest}>{children}</button>
 )
 
 export default Button
 
-const StyledButton = styled(ElementButton)`
-  padding: 0.5rem 1rem;
-  background: ${({ theme }) => theme.colors.primary};
-  border-radius: ${BORDER_RADIUS};
-`
+// const StyledButton = styled(ElementButton)`
+//   padding: 0.5rem 1rem;
+//   background: ${({ theme }) => theme.colors.primary};
+//   border-radius: ${BORDER_RADIUS};
+// `
