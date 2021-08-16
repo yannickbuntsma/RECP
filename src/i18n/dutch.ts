@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+
 export const dutch = {
   tsp: {
     singular: 'theelepel',
@@ -11,7 +13,7 @@ export const dutch = {
   l: 'liter',
   g: 'gram',
   kg: 'kilo',
-  pieces: {
+  piece: {
     singular: 'stuk',
     plural: 'stuks',
   },
@@ -32,4 +34,5 @@ export const dutch = {
     singular: 'teentje',
     plural: 'teentjes',
   },
+  'to taste': 'naar smaak',
 }
