@@ -23,9 +23,9 @@ const Home: React.FC<Props> = () => {
             }
           }
         })
-        console.log('recipes', recipes)
         setData(recipes)
       })
+      // eslint-disable-next-line no-console
       .catch((err) => console.error(err))
   }
 

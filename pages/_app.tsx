@@ -1,6 +1,7 @@
 import * as React from 'react'
 import App, { AppContext } from 'next/app'
-import { ThemeProvider } from 'emotion-theming'
+import Head from 'next/head'
+import { ThemeProvider } from '@emotion/react'
 import { Auth0Provider } from 'use-auth0-hooks'
 
 import { theme } from '../src/theme/theme'
@@ -25,11 +26,20 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
-      <ThemeProvider theme={theme}>
-        <Auth0Provider {...auth0Settings}>
-          <Component {...pageProps} />
-        </Auth0Provider>
-      </ThemeProvider>
+      <>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          />
+          <title>RECP</title>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <Auth0Provider {...auth0Settings}>
+            <Component {...pageProps} />
+          </Auth0Provider>
+        </ThemeProvider>
+      </>
     )
   }
 }

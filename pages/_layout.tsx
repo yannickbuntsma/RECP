@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { FloatingMenu } from '../src/components'

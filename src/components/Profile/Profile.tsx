@@ -8,9 +8,7 @@ export interface Props {}
 
 const Profile: React.FC<Props> = () => {
   const auth = useAuth()
-  const logOut = React.useCallback(() => auth.logout({ returnTo: '' }), [
-    auth.logout,
-  ])
+  const logOut = React.useCallback(() => auth.logout({ returnTo: '' }), [auth])
 
   return auth.isLoading ? (
     <h2>Loading...</h2>

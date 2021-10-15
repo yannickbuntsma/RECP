@@ -24,6 +24,7 @@ export default class RecipePage extends React.Component<Props> {
             id,
           }
         })
+        // eslint-disable-next-line no-console
         .catch((err) => console.error(err))
     }
 

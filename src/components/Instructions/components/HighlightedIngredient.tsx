@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { withTheme } from 'emotion-theming'
+import { withTheme } from '@emotion/react'
 
 import { ThemeProps } from '../../../theme/theme'
 

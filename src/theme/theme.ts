@@ -1,4 +1,4 @@
-import * as EmotionTheming from 'emotion-theming'
+import * as EmotionTheming from '@emotion/react'
 
 export const lightTheme = {
   colors: {
@@ -24,10 +24,13 @@ export const darkTheme = {
 // TODO: Make switch
 export const theme = lightTheme
 
-export type Theme = typeof theme
+type MyTheme = typeof theme
 
+declare module '@emotion/react' {
+  export interface Theme extends MyTheme {}
+}
 export interface ThemeProps {
-  theme: Theme
+  theme: MyTheme
 }
 
-export const useTheme = () => EmotionTheming.useTheme<Theme>()
+export const useTheme = () => EmotionTheming.useTheme()
