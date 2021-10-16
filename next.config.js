@@ -5,7 +5,7 @@ require('dotenv').config()
 
 module.exports = withPWA({
   pwa: {
-    dest: 'public'
+    dest: 'public',
   },
   webpack: (config) => {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
@@ -18,4 +18,3 @@ module.exports = withPWA({
     return config
   },
 })
-

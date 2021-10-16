@@ -9,6 +9,8 @@
 # Next.js
 .next
 dist
+out
+.page-mapping.json
 
 # Logs
 logs

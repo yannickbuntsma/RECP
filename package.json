@@ -11,6 +11,9 @@
     "clean": "rimraf .next dist .cache",
     "dev": "yarn clean && next -p 8000",
     "build": "next build",
+    "postbuild": "rimraf .page-mapping.json",
+    "export": "next build && next export",
+    "serve": "serve ./out",
     "start-build": "next start -p 8000",
     "start": "yarn dev",
     "fix": "yarn fix:js",
@@ -42,6 +45,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^7.0.1",
+    "slugify": "^1.6.1",
     "typescript": "^4.4.4",
     "use-auth0-hooks": "^0.7.0"
   },
@@ -69,6 +73,7 @@
     "jest": "^26.0.1",
     "lint-staged": "^10.2.2",
     "nodemon": "^2.0.13",
+    "serve": "^12.0.1",
     "ts-jest": "^27.0.6",
     "webpack": "^5.58.2"
   }

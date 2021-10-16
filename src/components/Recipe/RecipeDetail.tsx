@@ -47,8 +47,12 @@ const RecipeDetail: React.FC<Props> = ({ recipe }) => {
   const enhancedInstructions = addLineIngredientData(
     instructions,
     ingredientList,
-    ({ name, amount, unit }: Ingredient) =>
-      `<ingr>${name} (${amount} ${unit})</ingr>`,
+    (ingredient: Ingredient) => {
+      if (!ingredient) return
+      const { name, amount, unit } = ingredient
+      // eslint-disable-next-line consistent-return
+      return `<ingr>${name} (${amount} ${unit})</ingr>`
+    },
   )
 
   return (
