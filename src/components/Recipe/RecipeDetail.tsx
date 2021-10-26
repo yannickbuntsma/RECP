@@ -13,6 +13,7 @@ import Instructions from '../Instructions/Instructions'
 import { useShoppingList } from '../../hooks/use-shopping-list'
 
 const Basket = require('../../icons/shopping-basket_outline.svg')
+const Clipboard = require('../../icons/clipboard.svg')
 
 export interface Props {
   recipe: Recipe
@@ -40,6 +41,13 @@ const RecipeDetail: React.FC<Props> = ({ recipe }) => {
     addItems(list)
   }
 
+  const handleCopyToClipboard = (ingredients: Ingredient[]) => {
+    const text = ingredients
+      .map(({ amount, unit, name }) => `${amount} ${unit} ${name}`)
+      .join('\n')
+    navigator.clipboard.writeText(text)
+  }
+
   const enhancedInstructions = addLineIngredientData(
     instructions,
     ingredientList,
@@ -60,10 +68,25 @@ const RecipeDetail: React.FC<Props> = ({ recipe }) => {
           onChange={handleIngredientSelection}
         />
         <Spacer size="double" />
-        <AddToCartButton onClick={() => handleAdd(ingredientList, selected)}>
-          <Text>Voeg selectie toe</Text>
-          <Basket.default style={{ height: '2rem', width: '2rem' }} />
-        </AddToCartButton>
+
+        <Grid>
+          <GridChild>
+            <AddToCartButton
+              onClick={() => handleAdd(ingredientList, selected)}
+            >
+              <Text>Voeg selectie toe</Text>
+              <Basket.default style={{ marginLeft: '1rem' }} />
+            </AddToCartButton>
+          </GridChild>
+          <GridChild>
+            <AddToCartButton
+              onClick={() => handleCopyToClipboard(ingredientList)}
+            >
+              <Text>Kopieer naar klembord</Text>
+              <Clipboard.default style={{ marginLeft: '1rem' }} />
+            </AddToCartButton>
+          </GridChild>
+        </Grid>
         <Spacer size="double" />
         <Instructions>{enhancedInstructions}</Instructions>
       </Wrapper>
@@ -77,6 +100,12 @@ const AddToCartButton = styled(Button)`
   color: white;
   font-weight: bold;
 `
+
+const Grid = styled.div`
+  display: inline-grid;
+  grid-gap: 1rem;
+`
+const GridChild = styled.span``
 
 const Title = styled(Heading.H1)`
   font-family: 'Oregano', cursive;
