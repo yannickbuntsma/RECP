@@ -26,10 +26,6 @@ const RecipeDetail: React.FC<Props> = ({ recipe }) => {
     ingredientList.map((item) => item.id),
   )
   const handleIngredientSelection = (ingredients: Ingredient[]) => {
-    console.log(
-      'handling',
-      ingredients.map((item) => item.id),
-    )
     setSelected(ingredients.map((item) => item.id))
   }
 

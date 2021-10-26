@@ -11,7 +11,9 @@ export const mergeIngredientObjects = (
 
     // Something went wrong
     if (!existing && !addition) {
-      console.log(`Both ingredients were undefined`)
+      console.error(
+        `Both ingredients were undefined. Existing: ${existing}, addition: ${addition}`,
+      )
       return acc
     }
 
