@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import slugify from 'slugify'
 
 import { Recipe } from '../../types'
 import { DefaultPropTypes } from '../../default-prop-types'
@@ -16,13 +17,16 @@ export type Props = {
 
 const RecipeList: React.FC<Props> = ({ recipes }) => (
   <StyledRecipeList>
-    {recipes.map((recipe) => (
-      <Link key={recipe.id} href={`recipe/${recipe.id}`}>
-        <StyledRecipeListCard key={recipe.title}>
-          <RecipeCard recipe={recipe} />
-        </StyledRecipeListCard>
-      </Link>
-    ))}
+    {recipes.map((recipe) => {
+      const slug = slugify(recipe.title, { strict: true }).toLowerCase()
+      return (
+        <Link key={recipe.id} href={`recipe/${slug}`}>
+          <StyledRecipeListCard key={recipe.title}>
+            <RecipeCard recipe={recipe} />
+          </StyledRecipeListCard>
+        </Link>
+      )
+    })}
   </StyledRecipeList>
 )
 

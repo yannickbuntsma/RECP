@@ -7,6 +7,10 @@ function useLocalStorage<TValue>(
   initialValue: TValue,
 ): { value: TValue | undefined; setValue: (value: TValue) => void } {
   const [storedValue, setStoredValue] = React.useState<TValue>(() => {
+    if (typeof window === 'undefined') {
+      return { initialValue }
+    }
+
     try {
       const item = window.localStorage.getItem(key)
       return item ? JSON.parse(item) : initialValue
@@ -14,10 +18,6 @@ function useLocalStorage<TValue>(
       throw new Error(`Failed to set shopping list value. Error: ${error}`)
     }
   })
-
-  if (typeof window === 'undefined') {
-    return { value: undefined, setValue: (_) => {} }
-  }
 
   const setValue = (value: TValue) => {
     try {
