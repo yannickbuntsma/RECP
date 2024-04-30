@@ -1,7 +1,7 @@
 {
   "name": "RECP",
   "version": "0.0.1",
-  "description": "Personal recipe app",
+  "description": "Personal recipe app - testing kodiak",
   "main": "index.js",
   "repository": "https://github.com/yannickbuntsma/recp",
   "author": "yannickbuntsma <yannickbuntsma@gmail.com>",
